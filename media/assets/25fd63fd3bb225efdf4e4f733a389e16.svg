@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="110.22000122070312" height="87.02999877929688" viewBox="-0.75 -0.75 110.22000122070312 87.02999877929688">
+  <defs>
+    <linearGradient id="grad_1" x1="31.2065" y1="20.1133" x2="31.2065" y2="61.8691" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFDF0"/>
+      <stop offset="1" stop-color="#E6DE91"/>
+    </linearGradient>
+    <linearGradient id="grad_2" x1="79.3765" y1="20.1133" x2="79.3765" y2="61.8691" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFDF0"/>
+      <stop offset="1" stop-color="#E6DE91"/>
+    </linearGradient>
+    <linearGradient id="grad_3" x1="29.2065" y1="29.1133" x2="29.2065" y2="46.6963" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFDF0"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+    <linearGradient id="grad_4" x1="77.2065" y1="29.1133" x2="77.2065" y2="46.6963" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFDF0"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+  </defs>
+  <!-- Exported by Scratch - http://scratch.mit.edu/ -->
+  <g id="ID0.33601089427247643">
+    <path id="ID0.033297700341790915_17_" fill="none" d="M 0 0 L 108.720 0 L 108.720 85.530 L 0 85.530 L 0 0 Z " stroke-width="1"/>
+    <path id="ID0.8605533475056291" fill="url(#grad_1)" stroke="#000000" stroke-width="1.5" d="M 38.310 30.110 L 31.210 20.110 L 24.110 30.110 L 24.110 59.980 C 26.620 62.490 35.800 62.490 38.310 59.980 L 38.310 30.110 Z "/>
+    <path id="ID0.4581647193990648" fill="url(#grad_2)" stroke="#000000" stroke-width="1.5" d="M 86.480 30.110 L 79.380 20.110 L 72.280 30.110 L 72.280 59.980 C 74.790 62.490 83.970 62.490 86.480 59.980 L 86.480 30.110 Z "/>
+    <path id="ID0.6000765091739595" fill="url(#grad_3)" d="M 31.450 44.750 C 31.450 45.830 30.450 46.700 29.210 46.700 L 29.210 46.700 C 27.970 46.700 26.970 45.830 26.970 44.750 L 26.970 31.060 C 26.970 29.980 27.970 29.110 29.210 29.110 L 29.210 29.110 C 30.450 29.110 31.450 29.980 31.450 31.060 L 31.450 44.750 Z " stroke-width="1"/>
+    <path id="ID0.3878238555043936" fill="url(#grad_4)" d="M 79.450 44.750 C 79.450 45.830 78.450 46.700 77.210 46.700 L 77.210 46.700 C 75.970 46.700 74.970 45.830 74.970 44.750 L 74.970 31.060 C 74.970 29.980 75.970 29.110 77.210 29.110 L 77.210 29.110 C 78.450 29.110 79.450 29.980 79.450 31.060 L 79.450 44.750 Z " stroke-width="1"/>
+  </g>
+</svg>

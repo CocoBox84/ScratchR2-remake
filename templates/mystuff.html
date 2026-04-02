@@ -1,0 +1,441 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>My Stuff</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #ffffff;
+        }
+
+        #scratch-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #player {
+            width: 482px;
+            height: 425px;
+        }
+
+
+        #scratch {
+
+            visibility: visible;
+
+            display: block;
+
+            border: 0;
+            margin: 0;
+            padding: 0;
+
+
+            color: #322f31;
+            line-height: 1.5385em;
+            text-shadow: 0 1px #fff;
+
+            --wm-toolbar-height: 65px;
+
+            color: #211922;
+            font-family: "helvetica neue", arial, sans-serif;
+            font-size: 13px;
+
+            color: #000;
+            direction: ltr;
+            font: 81.25% 'Lucida Grande', arial, sans-serif;
+            font-family: "Lucida Grande", arial, sans-serif;
+            font-size: 81.25%;
+            line-height: normal;
+        }
+
+        #scratch.fullscreen {
+            display: block !important;
+            position: fixed !important;
+            z-index: 10000000000 !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+        }
+
+        #content {
+            padding: 50px 0 7em 0;
+        }
+
+        #topnav form.search .glass {
+            background: url("{% static 'nav-search-glass.png' %}") no-repeat 9px center !important;
+        }
+
+        #mystuff-content {
+            justify-content: center;
+            align-content: center;
+            display: flex;
+        }
+
+        /* Container for each project card */
+.media-item-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.media-item-content.not-shared {
+  opacity: 0.85;
+}
+
+/* Thumbnail */
+.media-thumb {
+  flex: 0 0 100px;
+  margin-right: 12px;
+}
+.media-thumb img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+/* Info section */
+.media-info {
+  flex: 1;
+}
+.media-info-item.title {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.media-info-item.date {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+.media-control-edit {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Stats for shared projects */
+.media-stats {
+  flex: 0 0 auto;
+  text-align: right;
+  font-size: 12px;
+  color: #444;
+}
+.media-stats .stat {
+  display: inline-block;
+  margin-left: 8px;
+}
+.media-stats .icon-xs {
+  margin-right: 2px;
+}
+
+/* Actions (delete/share/unshare) */
+.media-action {
+  flex: 0 0 auto;
+  text-align: right;
+}
+.media-action a,
+.media-stats a.unshare {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #0077cc;
+  text-decoration: none;
+}
+.media-action a:hover,
+.media-stats a.unshare:hover {
+  text-decoration: underline;
+}
+
+.post-link {
+    display: inline;
+}
+
+.button.small>span, button.small>span {
+    line-height: 25px;
+}
+
+.post-link button {
+    display: inline;
+    line-height: 25px;
+}
+
+/**/
+
+/* Container for each project card */
+.media-item-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.media-item-content.not-shared {
+  opacity: 0.85;
+}
+
+/* Thumbnail */
+.media-thumb {
+  flex: 0 0 100px;
+  margin-right: 12px;
+}
+.media-thumb img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+/* Info section */
+.media-info {
+  flex: 1;
+}
+.media-info-item.title {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.media-info-item.date {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+.media-control-edit {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Stats for shared projects */
+.media-stats {
+  flex: 0 0 auto;
+  text-align: right;
+  font-size: 12px;
+  color: #444;
+}
+.media-stats .stat {
+  display: inline-block;
+  margin-left: 8px;
+}
+.media-stats .icon-xs {
+  margin-right: 2px;
+}
+
+/* Actions (delete/share/unshare) */
+.media-action {
+  flex: 0 0 auto;
+  text-align: right;
+}
+.media-action a,
+.media-stats a.unshare {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #0077cc;
+  text-decoration: none;
+}
+.media-action a:hover,
+.media-stats a.unshare:hover {
+  text-decoration: underline;
+}
+
+/* Sidebar tabs *
+#sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+#sidebar li {
+  /*border-bottom: 1px solid #ddd;*
+}
+#sidebar li a {
+  display: block;
+  padding: 8px 12px;
+  color: #333;
+  text-decoration: none;
+}
+#sidebar li.active a {
+  font-weight: bold;
+  /*background: #f0f0f0;*
+}*/
+
+    </style>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/project_base.css' %}" rel="stylesheet">
+    <link href="{% static 'css/studio.css' %}">
+    <script src="{% static 'swfobject.js' %}"></script>
+</head>
+
+<body>
+    <div id="pagewrapper">
+        <div id="topnav">
+            <div class="innerwrap">
+                <div class="container">
+                    <a href="http://127.0.0.1:8000/" class="logo"><span class="scratch"></span></a>
+                    <ul class="site-nav">
+                        <li><a id="project-create" href="http://127.0.0.1:8000/projects/editor/?tip_bar=home">Create</a>
+                        </li>
+                        <li><a href="http://127.0.0.1:8000/explore/?date=this_month">Explore</a></li>
+                        <li><a href="http://127.0.0.1:8000/discuss/">Discuss</a></li>
+                        <li><a href="http://127.0.0.1:8000/about/">About</a></li>
+                        <li class="last"><a href="http://127.0.0.1:8000/help/">Help</a></li>
+                    </ul>
+
+                    <form class="search" action="http://127.0.0.1:8000/search/google_results/" method="get">
+                        <input class="glass" value="" type="submit">
+
+                        <input id="search-input" placeholder="Search" name="q" type="text">
+
+
+                        <input name="date" value="anytime" type="hidden">
+                        <input name="sort_by" value="datetime_shared" type="hidden">
+
+                    </form>
+                </div>
+            </div><!-- innerwrap -->
+        </div>
+        <div class="container" id="content">
+            <div class="cols">
+                <!-- Sidebar -->
+                <div class="col-4 left">
+                    <div class="box v-tabs">
+                        <div id="sidebar" class="tabs-index">
+                            <ul id="tabs" data-control="tabs">
+                                <li class="first active" data-tab="all"><a href="#all">All Projects ({{ all_projects|length }})</a></li>
+                                <li class="sub-list" data-tab="shared"><a href="#shared">Shared Projects ({{ shared|length }})</a></li>
+                                <li class="sub-list" data-tab="unshared"><a href="#unshared">Unshared Projects ({{ unshared|length }})</a></li>
+                                <li class="sub-list last" data-tab="trash"><a href="#trash">Trash ({{ trashed|length }})</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main content -->
+                <div class="col-12">
+                    <div class="box">
+                        <div class="box-head">
+                            <h2>My Stuff</h2>
+                            <div class="buttons">
+                                <a href="/projects/editor/?tip_bar=home" class="button small grey"><span>+ New Project</span></a>
+                                <form action="{#% url 'studio_create' %#}" method="post" class="post-link">{% csrf_token %}
+                                    <button type="submit" class="button small grey"><span>+ New Studio</span></button>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="box-content v-tabs-content" id="main-content">
+                            <div class="action-bar scroll">
+                                <div class="inner">
+                                    <div class="dropdown radio-style button grey small">
+                                        <span class="dropdown-toggle black" data-toggle="dropdown">
+                                            <span class="selected">Sort by</span><span class="caret"></span>
+                                        </span>
+                                        <div class="dropdown-menu radio-style">
+                                            <ul data-control="sort">
+                                                <li class="selected" data-decsort="datetime_modified">Last modified</li>
+                                                <li data-descsort="view_count">Views</li>
+                                                <li data-descsort="love_count">Loves</li>
+                                                <li data-descsort="remixers_count">Remixes</li>
+                                                <li data-ascsort="title">A-Z</li>
+                                                <li data-descsort="title">Z-A</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div id="alert-view"></div>
+
+                            <!-- Project lists -->
+                            <ul class="media-list" id="all">
+                                {% for project in all_projects %}
+                                {% include "partials/project_card.html" %}
+                                {% empty %}
+                                <p>No projects yet.</p>
+                                {% endfor %}
+                            </ul>
+
+                            <ul class="media-list" id="shared" style="display:none;">
+                                {% for project in shared %}
+                                {% include "partials/project_card.html" %}
+                                {% empty %}
+                                <p>No shared projects.</p>
+                                {% endfor %}
+                            </ul>
+
+                            <ul class="media-list" id="unshared" style="display:none;">
+                                {% for project in unshared %}
+                                {% include "partials/project_card.html" %}
+                                {% empty %}
+                                <p>No unshared projects.</p>
+                                {% endfor %}
+                            </ul>
+
+                            <ul class="media-list" id="trash" style="display:none;">
+                                {% for project in trashed %}
+                                {% include "partials/project_card.html" %}
+                                {% empty %}
+                                <p>No trashed projects.</p>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll("#sidebar a").forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                const target = link.getAttribute("href").replace("#", "");
+
+                // hide all lists
+                document.querySelectorAll(".media-list ul").forEach(ul => ul.style.display = "none");
+
+                // show selected
+                document.getElementById(target).style.display = "block";
+
+                // update active tab
+                document.querySelectorAll("#sidebar li").forEach(li => li.classList.remove("active"));
+                link.parentElement.classList.add("active");
+            });
+        });
+
+        // show All Projects by default
+        document.querySelector("#all").style.display = "block";
+    </script>
+    </div>
+    </div>
+
+    <!--<script>
+        document.querySelectorAll(".tabs a").forEach(link => {
+            link.addEventListener("click", e => {
+                e.preventDefault();
+                document.querySelectorAll(".tab-content").forEach(div => div.style.display = "none");
+                document.querySelector(link.getAttribute("href")).style.display = "block";
+            });
+        });
+
+        // Show "All Projects" by default
+        document.querySelectorAll(".tab-content").forEach(div => div.style.display = "none");
+        document.querySelector("#all").style.display = "block";
+    </script>-->
+</body>
+
+</html>

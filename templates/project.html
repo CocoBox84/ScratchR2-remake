@@ -1,0 +1,1137 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>
+    {{ project.title|escapejs }} on The Scratch Clone
+  </title>
+  <style>
+    @keyframes fadeOut {
+      0% {
+        opacity: 1;
+        display: block !important;
+        /*transform: scale(0.95) translateY(20px);*/
+      }
+
+      25% {
+        opacity: 1;
+        display: block !important;
+        /*transform: scale(0.95) translateY(20px);*/
+      }
+
+      100% {
+        opacity: 0;
+        display: block !important;
+        /*transform: scale(1) translateY(0);*/
+      }
+    }
+  </style>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #ffffff;
+    }
+
+    #scratch-container {
+      width: 100%;
+      height: 100%;
+    }
+
+    #player {
+      width: 482px;
+      height: 425px;
+    }
+
+
+    #scratch,
+    #scratch-container {
+
+      visibility: visible;
+
+      display: block;
+
+      border: 0;
+      margin: 0;
+      padding: 0;
+
+
+      color: #322f31;
+      line-height: 1.5385em;
+      text-shadow: 0 1px #fff;
+
+      --wm-toolbar-height: 65px;
+
+      color: #211922;
+      font-family: "helvetica neue", arial, sans-serif;
+      font-size: 13px;
+
+      color: #000;
+      direction: ltr;
+      font: 81.25% 'Lucida Grande', arial, sans-serif;
+      font-family: "Lucida Grande", arial, sans-serif;
+      font-size: 81.25%;
+      line-height: normal;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      /*animation: slideIn 500ms ease-in-out !important;*/
+      background-color: white;
+    }
+
+    #scratch.fullscreen {
+      display: block !important;
+      visibility: visible;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      position: fixed;
+      transition: top 5s, left 5s, right 5s, bottom 5s;
+    }
+
+    /**
+    #scratch.player {
+      animation: slideIn 500ms ease-in-out;
+    }
+    /**/
+
+    #black-flash.player {
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      position: fixed;
+      display: block !important;
+      z-index: 100000000000;
+      animation: fadeOut 1000ms cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+      background-color: #000;
+    }
+
+    /*#scratch.player #black-flash {
+      display: block !important;
+      animation: slideIn 5s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }*/
+
+    body.editor,
+    body.editor #player {
+      background-color: #000 !important;
+      background-image: none !important;
+    }
+
+    #tip-bar.fullscreen {
+      display: block !important;
+      z-index: 10000000001 !important;
+    }
+
+    #content {
+      padding: 50px 0 7em 0;
+    }
+
+    #topnav form.search .glass {
+      background: url("{% static 'nav-search-glass.png' %}") no-repeat 9px center !important;
+    }
+
+    #black-flash {
+      display: none;
+    }
+  </style>
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/project_base.css' %}" rel="stylesheet">
+  <script src="{% static 'swfobject.js' %}"></script>
+</head>
+
+<body>
+  <div id="pagewrapper">
+    <div id="topnav">
+      <div class="innerwrap">
+        <div class="container">
+          <a href="/" class="logo"><span class="scratch"></span></a>
+          <ul class="site-nav">
+            <li><a id="project-create" href="/projects/editor/?tip_bar=home">Create</a></li>
+            <li><a href="/explore/?date=this_month">Explore</a></li>
+            <li><a href="/discuss/">Discuss</a></li>
+            <li><a href="/about/">About</a></li>
+            <li class="last"><a href="/help/">Help</a></li>
+          </ul>
+
+          <form class="search" action="/search/google_results/" method="get">
+            <input class="glass" value="" type="submit">
+
+            <input id="search-input" placeholder="Search" name="q" type="text">
+
+
+            <input name="date" value="anytime" type="hidden">
+            <input name="sort_by" value="datetime_shared" type="hidden">
+
+          </form>
+        </div>
+      </div><!-- innerwrap -->
+    </div>
+    <div class="container" id="content">
+
+
+
+
+
+      <div id="alert-view"></div>
+
+
+
+
+
+      <div class="showcase" id="project" data-project-id="{{ project.id }}">
+        <div class="box">
+          <div class="box-head">
+
+            <div class="header-text">
+              {% if project.owner.username != None%}
+              <h2 id="title">
+                {{ project.title|escapejs }}
+              </h2>
+
+              <div id="author">
+                by
+
+                <a href="http://scratch.mit.edu/users/{{ project.owner.username }}/">
+                  <span id="owner">
+                    {{ project.owner.username }}</span>
+                </a>
+
+
+              </div>
+              {% endif %}
+            </div>
+
+            <div class="buttons">
+              <div id="editor-stats">
+                <div class="stat"><span class="count" id="script-count">0</span> scripts</div>
+                <div class="stat"><span class="count" id="sprite-count">0</span> sprites</div>
+              </div>
+
+              <div style="display: inline;">
+                <a onclick="JSremixProject()" class="icon">
+                  <div class="button orange" id="remix-button">
+                    <span class="icon-remix icon">Remix</span>
+                  </div>
+                </a>
+
+                <a href="#editor" class="icon">
+                  <div class="button" id="see-inside">
+                    <span class="see-inside icon white">See inside</span>
+                  </div>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+          <div class="box-content">
+            <div class="stage">
+              <div id="player" class="player">
+
+                <!-- Start template projects/public.html project-swf -->
+
+
+                <!-- Start template project/includes/flash_player_object.html -->
+                <div id="scratch-container"></div>
+                <!-- End template project/includes/flash_player_object.html -->
+
+                <!-- End template projects/public.html project-swf -->
+
+              </div>
+            </div>
+            <div id="info" class="info">
+
+              <div class="dynamic">
+
+
+                <div class="text-block">
+                  <b>Instructions</b>
+                  <div id="instructions" class="read-only instructions" style="height: 146.5px;">
+                    <div class="scrollbar" style="height: 147px;">
+                      <div class="track" style="height: 147px;">
+                        <div class="thumb" style="top: 0px; height: 98.2227px;">
+                          <div class="end"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="viewport">
+                      <div class="overview" style="top: 0px;">
+                        <textarea style="width: 370px; height: 130px;" name="" id="instructions-textarea">
+                        {{ project.instructions|linebreaks }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="divider"></div>
+                </div>
+
+
+
+                <div class="text-block">
+                  <b>Notes and Credits </b>
+                  <div id="description" class="read-only instructions" style="height: 146.5px;">
+                    <div class="scrollbar" style="height: 147px;">
+                      <div class="track" style="height: 147px;">
+                        <div class="thumb" style="top: 0px; height: 77.175px;">
+                          <div class="end"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="viewport">
+                      <div class="overview" style="top: 0px;">
+                        <textarea style="width: 370px; height: 300px;" name="" id="notes-textarea">
+                        {{ project.notes|linebreaks }}</textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div id="fixed" class="fixed">
+
+
+
+
+
+                <div id="project-tags" class="has-tags">
+                  <div class="tag-box">
+
+                    <span class="tag"><a href="/web/20141231004957/http://scratch.mit.edu/explore/projects/block/?date=this_month">block</a></span>
+
+                    <span class="tag"><a href="/web/20141231004957/http://scratch.mit.edu/explore/projects/art/?date=this_month">art</a></span>
+
+                    <span class="tag"><a href="/web/20141231004957/http://scratch.mit.edu/explore/projects/games/?date=this_month">games</a></span>
+
+                  </div>
+                </div>
+
+
+
+                <div class="dates">
+
+                  <span class="date-shared">
+                    <a href="/web/20141231004957/http://scratch.mit.edu/help/faq/#remix" class="copyright"></a>
+
+                    Shared:
+                    {{ project.shared_at }}
+
+                  </span>
+                  <span class="date-updated">Modified:
+                    {{ project.updated_at }}</span>
+
+                </div>
+              </div>
+
+            </div>
+
+            <div class="actions clearfix">
+
+              <div id="stats" class="active">
+
+                <div onclick="toggleFavorite()" class="action tooltip bottom first" data-control="modal-login" data-stat="favoriters" data-add="true">
+                  <span class="hovertext"><span class="arrow"></span>Favorite this project</span>
+                  <span id="fav-count" class="favorite icon" data-content="fav-count">
+                    {{ project.favorite_count }}
+                  </span>
+                </div>
+
+
+
+                <div onclick="toggleLove()" class="action tooltip bottom" id="love-this" data-control="modal-login" data-stat="lovers" data-add="true">
+                  <span class="hovertext"><span class="arrow"></span>Love this project</span>
+                  <span id="love-count" class="love icon" data-content="love-count">
+                    {{ project.love_count }}</span>
+                </div>
+
+
+
+
+
+                <div class="stats">
+                  <div id="total-views" class="first action tooltip bottom grey">
+                    <span class="hovertext"><span class="arrow"></span>Total views</span>
+                    <span class="icon views">
+                      {{ project.views }}</span>
+                  </div>
+                  <div class="action last tooltip bottom grey">
+                    <span class="hovertext"><span class="arrow"></span>View the remix tree</span>
+                    <a href="remixtree" class="remix-tree" onclick="on_click_remixtree('{{ project.id }}', window.location.pathname, '/projects/{{ project.id }}/remixtree/', '{{ project.id }}');">
+                      <span class="icon remix-tree">&nbsp;
+                        {{ project.remixes }}</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="player-box-footer-module" id="player-box-footer">
+      </div>
+
+      <div class="player-box-footer-module" id="bug-report-form">
+      </div>
+
+      <div id="add-to-menu" class="player-box-footer-module hide page">
+        <div class="section first">
+          <h4>Add this project to a studio you curate (or remove it from a studio)</h4>
+          Just click on the button for any of the studios from the list below
+          <div class="studio-list">
+            <ul>
+              <div class="next-page" data-url="/web/20141231004957oe_/http://scratch.mit.edu/site-api/galleries/curated_by_or_with_project/40791994/1/">
+              </div>
+            </ul>
+          </div>
+        </div>
+        <div class="close">x</div>
+      </div>
+
+      <div class="player-box-footer-module page">
+        <div class="section first" style="height: 100px; display: block; visibility: visible;">
+          <h3>This project uses cloud variables, a feature that is only available to signed in Scratchers.</h3>
+        </div>
+      </div>
+
+      <div id="download-menu" class="player-box-footer-module hide page">
+        <div class="section first" style="height: 100px;">
+          <h4>Download this project file</h4>
+
+          <div id="old-scratch-project2" class="hide">
+            <div class="button"><span class="icon download">&nbsp;</span>
+              <span>Download code </span>
+            </div>
+            <span class="alert alert-warning">This project can be opened in Scratch 1.4 or 2.0</span>
+          </div>
+
+          <div id="new-scratch-project">
+            <div class="button"><span class="icon download">&nbsp;</span>
+              <span>Download code </span>
+            </div>
+            <span class="alert alert-warning">This project was edited in 2.0 so you need 2.0 to open it</span>
+            <br>(dialog appears on the stage)
+          </div>
+
+        </div>
+        <div class="close" data-control="close">x</div>
+      </div>
+
+      <div id="share-to-menu" class="player-box-footer-module hide page">
+        <div class="section embed first">
+          <h4>Embed</h4>
+          <form class="form-horizontal">
+            <textarea id="embed-textarea" width="98%">      &lt;iframe allowtransparency="true" width="485" height="402" src="https://web.archive.org/web/20141231004957if_/http://scratch.mit.edu/projects/embed/40791994/?autostart=false" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+  </textarea>
+            <span class="small-text">Copy and paste the embed code above.</span>
+          </form>
+        </div>
+        <div class="section social">
+          <h4>Share</h4>
+          <a class="social-icon facebook" href="https://web.archive.org/web/20141231004957/http://www.facebook.com/sharer.php?u=http://scratch.mit.edu/projects/40791994/" target+"blank"=""></a>
+          <a class="social-icon twitter" href="https://web.archive.org/web/20141231004957/http://twitter.com/intent/tweet?original_referer=http://scratch.mit.edu/projects/40791994/&amp;text=http://scratch.mit.edu/projects/40791994/ made w/ Scratch" target+"blank"=""></a>
+
+          <textarea readonly="" id="link-textarea" width="90%"></textarea>
+
+
+        </div>
+        <div class="section download hide" id="old-scratch-project">
+          <h4>Download 1.4 Project</h4>
+          <a class="grey button" href=""><span class="text">Download code</span></a>
+        </div>
+
+        <div class="close">x</div>
+      </div>
+
+
+
+
+
+      <div class="cols related">
+        <div class="col-11">
+          <div class="box">
+            <div class="box-head">
+              <h4><span class="icon-sm comment black"></span>Comments (921)</h4>
+            </div>
+            <div class="box-content">
+
+
+
+
+
+              <div id="comments">
+
+                <div id="comment-form">
+
+
+                  <form id="main-post-form" class="comments-on">
+                    <div class="control-group tooltip right">
+
+                      <textarea name="content" placeholder="Leave a comment" data-control="modal-login"></textarea>
+
+                      <span id="comment-alert" class="hovertext error" data-control="error" data-content="comment-error"><span class="arrow"></span><span class="text"></span></span>
+                      <span class="small-text">You have <span id="chars-left">500</span> characters left.</span>
+                    </div>
+                    <div class="control-group">
+                      <div class="button small" data-control="modal-login" data-parent-thread="" data-commentee-id=""><a href="#null">Post</a></div>
+                      <div class="button small grey" data-control="cancel"><a href="#null">Cancel</a></div>
+                      <span class="notification"></span>
+                    </div>
+                  </form>
+                  <div class="template-feature-off comments-off" style="display: none;">Sorry, comment posting has been
+                    turned off for this project.</div>
+
+                  <div class="clearfix"></div>
+                </div>
+                <div>
+                  <ul class="comments" data-content="comments">
+                    <li id="comments-loading" class="top-level-reply"><span>Comments loading...</span></li>
+                  </ul>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="modal hide" id="media-library">
+        <div class="modal-header" id="top-row">
+          <span type="button" class="close" data-dismiss="modal">×</span>
+          <div id="library-name" class="titlecase"></div>
+
+        </div>
+        <div class="modal-body">
+          <div id="main">
+            <div id="left-column" class="inner">
+              <div id="filters">
+                <div id="category">
+                  <h4>Category</h4>
+                  <ul></ul>
+                </div>
+                <div id="theme">
+                  <h4>Theme</h4>
+                  <ul></ul>
+                </div>
+                <div id="type">
+                  <h4>Type</h4>
+                  <ul></ul>
+                </div>
+                <div id="features">
+                  <h4>Features</h4>
+                  <ul></ul>
+                </div>
+              </div>
+              <div id="sound"></div>
+            </div>
+            <div id="results-container" class="inner">
+              <ul id="results"></ul>
+              <div id="info-box">
+                <div id="selected-object">
+                  <h4 id="object-name" class="titlecase">&nbsp;</h4>
+                  <div id="object-info">
+                    <div id="sprite-counts">
+                      <div id="scripts" class="count">&nbsp;</div>
+                      <div id="costumes" class="count">&nbsp;</div>
+                      <div id="sounds" class="count">&nbsp;</div>
+                    </div>
+                    <div id="sprite-description">Description of the sprite</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="bottom-row">
+              <div id="cancel" class="inner"><span class="button small grey"><span>Cancel</span></span></div>
+              <div id="ok" class="inner"><span class="button small"><span>OK</span></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <div class="humane"><iframe class="iframeshim" scrolling="no" frameborder="0">
+          <html>
+
+          <head></head>
+
+          <body></body>
+
+          </html>
+        </iframe></div>
+      <div id="tip-bar">
+        <div id="tip-bar-inner" class="tipsclosed">
+          <div class="tip-header" style="">
+            <span class="tip-icon toggle-control">?</span>
+            <h5>
+              <span class="close-circle-dark">x</span>
+              <span class="tip-ctrl tip-home active">All Tips</span>
+            </h5>
+          </div>
+          <div class="tip-content" style="height: 718px;">
+            <div class="tip-arrow-container">
+              <span class="tip-arrow opentip toggle-control">◀</span>
+            </div>
+            <iframe id="tip-content-container" src="" frameborder="0"></iframe>
+          </div>
+        </div>
+        <iframe class="iframeshim" scrolling="no" frameborder="0">
+          <html>
+
+          <head></head>
+
+          <body></body>
+
+          </html>
+        </iframe>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="black-flash"></div>
+
+  <script src="{% static 'js/scratch.js' %}"></script>
+
+  <script>
+    const localData = JSON.parse((localStorage.getItem("Scratch2Legacy"))) || {
+      user: {
+        name: "",
+        id: 0
+      }
+    };
+    if (!localStorage.getItem("Scratch2Legacy")) {
+      localStorage.setItem("Scratch2Legacy", JSON.stringify(localData));
+    }
+    //const csrftoken = document.querySelector('#csrf-form input[name="csrfmiddlewaretoken"]').value;
+    const projectId = ("{{ project.id }}" != "no") ? "{{ project.id }}" : false; // passed from Django view
+    const projectTitle = "{{ project.title|escapejs }}";
+    const projectOwner = "{{ project.owner.username }}";
+    const blackFlash = document.getElementById("black-flash");
+
+    getUserData();
+
+    function embedSWF() {
+      const flashvars = {
+        autostart: 'false',
+        urlOverrides: encodeURIComponent(JSON.stringify({
+          sitePrefix: window.location.origin + '/',
+          siteCdnPrefix: window.location.origin + '/cdn/',
+          assetPrefix: window.location.origin + '/assets/',
+          assetCdnPrefix: window.location.origin + '/cdn.assets/',
+          projectPrefix: window.location.origin + '/projects/',
+          projectCdnPrefix: window.location.origin + '/cdn.projects/',
+          internalAPI: 'internalapi/',
+          siteAPI: 'site-api/'
+        }))
+      };
+
+      console.log(`Is this project shared? {{ project.isShared }}`);
+
+      // Add editor flag if in editor mode
+      if (window.location.hash === '#editor') {
+        flashvars.editmode = 'true';
+      }
+
+      const params = {
+        allowscriptaccess: 'always',
+        allowfullscreen: 'true',
+        wmode: 'direct',
+        menu: 'false',
+        flashvars: Object.entries(flashvars)
+          .map(([k, v]) => `${k}=${v}`)
+          .join('&')
+      };
+
+      const attributes = {
+        data: "{% static 'build/11.6/Scratch.swf' %}",
+        width: '100%',
+        height: '100%',
+        id: 'scratch',
+        class: (!projectId) ? "fullscreen" : ""
+      };
+
+      swfobject.createSWF(attributes, params, 'scratch-container');
+    }
+
+    // SWF calls this to double check that it is April Fools!
+    window.isFools = function() {
+      return false;
+    }
+
+    function flashBlackScreen() {}
+
+    /*window.JSsetPresentationMode = function (param) {
+      document.getElementById("body")?.classList.remove("editor");
+      document.getElementById("body")?.classList.add("editor");
+      if (Scratch.FlashApp.API.isEditor()) return; // <- Important! The swf calls this whenever it enters full screen. 
+      // This will prevent it from going into fullscreen from the editor because the editor already is in fullscreen. 
+      // When the swf exits fullscreen from the editor, It switches back to the project page. So prevent it from doing that if we are in the editor.
+      flashBlackScreen();
+      if (param) {
+        document.getElementById("scratch")?.classList.add("fullscreen");
+        document.querySelector("body").classList.add("editor");
+      } else {
+        document.querySelector("body").classList.remove("editor");
+        document.getElementById("scratch")?.classList.remove("fullscreen");
+        document.getElementById("scratch").classList.remove("player");
+      }
+      document.getElementById("scratch").classList.remove("player");
+      setTimeout(function() {
+          setTimeout(function() {
+            document.getElementById("scratch").classList.remove("player");
+          }, 1000);
+          document.getElementById("scratch").classList.add("player");
+        }, 30);
+
+      return 0;
+    }*/
+
+    // Called by JavaScript And ActionScript
+    window.JSsetPresentationMode = function(param) {
+      const body = document.querySelector("body");
+      const scratch = document.getElementById("scratch");
+      const blackFlash = document.getElementById("black-flash");
+      blackFlash.classList.remove("player");
+      void blackFlash.offsetWidth; // force reflow
+      if (!projectId) {
+        scratch?.classList.add("fullscreen");
+        body.classList.add("editor");
+        void scratch.offsetWidth; // force reflow
+        return;
+      };
+
+      // If already in editor, don't switch modes — but still allow animation restart
+      const inEditor = Scratch.FlashApp.API.isEditor();
+
+      if (!inEditor) {
+        if (param) {
+          // Enter fullscreen/editor
+          scratch?.classList.add("fullscreen");
+          body.classList.add("editor");
+        } else {
+          // Exit fullscreen/editor
+          body.classList.remove("editor");
+          scratch?.classList.remove("fullscreen");
+        }
+      }
+
+      // Always restart the fade animation AFTER state changes
+      if (document.getElementById("black-flash")) {
+        blackFlash.classList.remove("player");
+        void blackFlash.offsetWidth; // force reflow
+        blackFlash.classList.add("player");
+      }
+
+      setTimeout(function() {
+        blackFlash.classList.remove("player");
+        void blackFlash.offsetWidth; // force reflow
+      }, 500);
+
+      return true; // The SWF Expects true
+    };
+
+
+    // Called by ActionScript
+    window.JSsetEditMode = function(param) {
+      if (!projectId && Scratch.user.name !== "") {
+        const body = document.querySelector("body");
+        const scratch = document.getElementById("scratch");
+        scratch?.classList.add("fullscreen");
+        body.classList.add("editor");
+      }
+      console.log(param);
+      window.location.hash = (param) ? "#editor" : "#player";
+      JSsetPresentationMode(param);
+      setTimeout(function() {
+        Scratch.FlashApp.API.setEditorMode(param);
+      }, 1000);
+
+      return true; // The SWF Expects true
+    }
+
+    function JSremixProject() {
+      Scratch.FlashApp.isRemix = true;
+      console.log("Remixing project.");
+      window.JSsetEditMode(true);
+      setTimeout(function() {
+        Scratch.FlashApp.API.remixProject()
+      }, 3000);
+      //setTimeout(function () { window.location.href = `http://127.0.0.1:8000/projects/${newId}#editor`; }, 100000);
+      return true;
+    }
+
+    function JSshareProject(data) {
+      console.log("Sharing project...");
+      const isShared = Boolean("{{ project.isShared }}" == "True" || "{{ project.isShared }}" == "true");
+      fetch(`${window.location.origin}/site-api/projects/all/{{ project.id }}/share`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            shareStatus: String(!isShared)
+          }),
+        })
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log('Success:', data);
+        })
+        .catch((error) => {
+          console.error('Error:', error);
+        });
+      Scratch.FlashApp.API.shareProject(true);
+      window.location.hash = "#player";
+      window.document.getElementById("alert-view").innerHTML = "Your project is now shared!";
+      return true;
+    }
+
+    /**
+    function doHash(hash) {
+      //const projectId = null;
+      if (!projectId && Scratch.user.username) {
+        Scratch.FlashApp.API.setEditorMode(true);
+        document.getElementById("scratch")?.classList.add("fullscreen");
+        document.getElementById("tip-bar")?.classList.add("fullscreen");
+        document.querySelector("body").classList.add("editor");
+      }
+      const mode = hash.replace('#', '');
+      console.log("did hash")
+      console.log(mode);
+      flashBlackScreen();
+      if (mode === "editor") {
+        Scratch.FlashApp.API.setEditorMode(true);
+        document.getElementById("scratch")?.classList.add("fullscreen");
+        document.getElementById("tip-bar")?.classList.add("fullscreen");
+        document.querySelector("body").classList.add("editor");
+      };
+
+      if (mode === "player") {
+        JSsetPresentationMode(false);
+        document.getElementById("scratch")?.classList.remove("fullscreen");
+        document.getElementById("tip-bar")?.classList.remove("fullscreen");
+        document.querySelector("body").classList.remove("editor");
+        Scratch.FlashApp.API.setEditorMode(false);
+      }
+    }
+    /**/
+
+    function doHash(hash) {
+      console.log("projectId: ", projectId);
+      if (!projectId) {
+        document.getElementById("scratch")?.classList.add("fullscreen");
+        document.getElementById("tip-bar")?.classList.add("fullscreen");
+        document.querySelector("body").classList.add("editor");
+        Scratch.FlashApp.API.setEditorMode(true);
+        return;
+      }
+      const mode = hash.replace('#', '');
+      console.log("did hash");
+      console.log(mode);
+
+      flashBlackScreen();
+
+      if (mode === "editor") {
+        Scratch.FlashApp.API.setEditorMode(true);
+        document.getElementById("scratch")?.classList.add("fullscreen");
+        document.getElementById("tip-bar")?.classList.add("fullscreen");
+        document.querySelector("body").classList.add("editor");
+
+        // 🔑 Trigger animation restart
+        JSsetPresentationMode(true);
+      }
+
+      if (mode === "player") {
+        JSsetPresentationMode(false);
+        document.getElementById("scratch")?.classList.remove("fullscreen");
+        document.getElementById("tip-bar")?.classList.remove("fullscreen");
+        document.querySelector("body").classList.remove("editor");
+        Scratch.FlashApp.API.setEditorMode(false);
+      }
+    }
+
+    window.addEventListener('hashchange', () => doHash(window.location.hash));
+    doHash(window.location.hash); // run once on load
+
+    embedSWF();
+
+    window.JSsetProjectStats = function(scripts, sprites, hasCloudData, isOldWebsiteUrl) {
+      window.document.getElementById("script-count").textContent = scripts;
+      window.document.getElementById("sprite-count").textContent = sprites;
+      // Flip out and back into the editor. This will refresh the project creator
+      if (window.location.hash === "#editor") {
+        Scratch.FlashApp.API.setEditorMode(false);
+        Scratch.FlashApp.API.setEditorMode(true);
+      }
+    }
+
+    function setCloudBanner(text) {
+      window.document.getElementById("cloudBanner").innerHTML = text;
+    }
+
+    let currentTitle = "{{ project.title|escapejs }}";
+    console.log(currentTitle);
+
+    async function JSeditTitle(title) {
+      if (!projectId) {
+        title = "Scratch Project Editor";
+        window.document.title = `${title}`;
+        window.document.getElementById("title").textContent = title;
+        currentTitle = title;
+        return;
+      }
+      /*fetch("site-api/projects/all/{{ project.id }}/rename").then(d => {
+      })*/
+
+      const res = await fetch(`${window.location.origin}/site-api/projects/all/{{ project.id }}/rename`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          title
+        }),
+      });
+
+      if (!res.ok) {
+        title = currentTitle;
+        window.document.getElementById("title").textContent = title;
+        window.document.title = `${title} on The Scratch Clone`;
+        return data;
+      }
+
+      const data = await res.json();
+      console.log('Success:', data);
+      console.log(data);
+      const newTitle = data["title"];
+      console.log(`title res: ${newTitle}`);
+      window.document.getElementById("title").textContent = newTitle;
+      window.document.title = `${newTitle} on The Scratch Clone`;
+      currentTitle = newTitle;
+      return data;
+
+    }
+
+    function JSsetProjectBanner(banner, unknown) {
+      console.log(banner);
+      window.document.getElementById("alert-view").innerHTML = banner;
+    }
+
+    // Redirect hook for SWF
+    window.JSredirectTo = function(link, force, project) {
+      //return;
+      console.log(link);
+      switch (link) {
+        case "home":
+          window.location.assign(`${window.location.origin}/`);
+          return;
+          break;
+        case "settings":
+          window.location.assign(`${window.location.origin}/accounts/settings`);
+          return;
+          break;
+        case "profile":
+          window.location.assign(`${window.location.origin}/users/{{ user.username }}`)
+          return;
+          break;
+      }
+      if (!force) {
+        window.location.assign(`${window.location.origin}/${link}/`);
+      } else {
+        const tip_bar = new URLSearchParams(window.location.search).get("tip_bar");
+        const isRemix = Scratch.FlashApp.isRemix;
+        // On if no user is logged in then on login the project saves as a remix, so don't add the extras
+        if (isRemix && projectId) {
+          if (tip_bar) {
+            window.location.assign(`${window.location.origin}/projects/${link}/?tip_bar=${tip_bar}&isRemix=true#editor`);
+          } else {
+            window.location.assign(`${window.location.origin}/projects/${link}/?isRemix=true#editor`);
+          }
+        } else {
+          if (tip_bar) {
+            window.location.assign(`${window.location.origin}/projects/${link}/?tip_bar=${tip_bar}#editor`);
+          } else {
+            window.location.assign(`${window.location.origin}/projects/${link}/#editor`);
+          }
+        }
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", function(event) {
+      Scratch.FlashApp.API.attach(document.getElementById("scratch"));
+      let title = projectTitle;
+      if (!projectId) {
+        title = "Scratch Project Editor";
+        window.document.title = `${title}`;
+        window.document.getElementById("title").textContent = title;
+        return;
+      }
+      window.document.getElementById("title").textContent = title;
+      window.document.title = `${title} on The Scratch Clone`;
+    })
+
+    function JSeditorIsEmbedded() {
+      return false;
+    }
+
+
+
+    async function JSeditorReady() {
+      //const projectId = false;
+      Scratch.FlashApp.API.setLoginUser(Scratch.user.name);
+      if (!projectId && !Scratch.user.name) {
+        console.log("Locked");
+        Scratch.FlashApp.API.setEditorMode(true);
+        document.getElementById("scratch")?.classList.add("fullscreen");
+        document.getElementById("tip-bar")?.classList.add("fullscreen");
+        document.querySelector("body").classList.add("editor");
+        Scratch.FlashApp.API.createNewProject();
+        return;
+      }
+      if (window.location.hash === "#editor") {
+        document.getElementById("body")?.classList.remove("editor");
+        Scratch.FlashApp.API.setEditorMode(true);
+        document.getElementById("body")?.classList.add("editor");
+      }
+      Scratch.FlashApp.API.AprilFools();
+      const isShared = "{{ project.isShared }}" == "true";
+      console.log(`Project shared: ${isShared}`);
+      if (projectId) {
+        Scratch.FlashApp.API.loadProject(projectOwner, projectId, projectTitle, !isShared, false);
+      } else {
+        Scratch.FlashApp.API.setEditorMode(true);
+        document.getElementById("scratch")?.classList.add("fullscreen");
+        document.getElementById("tip-bar")?.classList.add("fullscreen");
+        document.querySelector("body").classList.add("editor");
+        Scratch.FlashApp.API.createNewProject();
+      }
+
+      return true;
+    }
+
+    async function getUserData() {
+      const res = await fetch(`${window.location.origin}/site-api/auth/login/`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json"
+        },
+      });
+      const data = await res.json();
+
+      console.log("User data:", data);
+
+      console.log("Username:", data["user"]);
+
+      Scratch.user.name = data.user;
+      Scratch.user.id = data.id;
+
+      return data;
+    }
+
+    async function JSlogin() {
+      const username = prompt("Username:", "");
+      const password = prompt("Password:", "");
+      if (!username || !password) return;
+
+      const res = await fetch(`${window.location.origin}/site-api/auth/login/`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          username,
+          password
+        })
+      });
+      const data = await res.json();
+      if (data.ok) {
+        // Tell SWF who is logged in
+        Scratch.FlashApp.API.setLoginUser(data.username);
+        if (projectOwner != data.username && !projectId) {
+          Scratch.FlashApp.API.call("ASexportProject");
+        }
+      } else {
+        alert("Login failed");
+      }
+    }
+
+    async function JSlogout() {
+      await fetch(`${window.location.origin}/site-api/auth/logout/`, {
+        method: "POST"
+      });
+      Scratch.FlashApp.API.setLoginUser("");
+    }
+
+    function randomInt(min, max) {
+      return Math.floor(Math.random() * max) + min;
+    }
+
+    function toggleLove() {
+      fetch(`/site-api/projects/${projectId}/love/`, {
+          method: "POST"
+        })
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById("love-count").textContent = d.count;
+        });
+    }
+
+    function toggleFavorite() {
+      fetch(`/site-api/projects/${projectId}/favorite/`, {
+          method: "POST"
+        })
+        .then(r => r.json())
+        .then(d => {
+          document.getElementById("fav-count").textContent = d.count;
+        });
+    }
+
+    function saveProjectInfo() {
+      const instructions = document.getElementById("instructions-textarea").value;
+      const notes = document.getElementById("notes-textarea").value;
+
+      fetch(`${window.location.origin}/site-api/projects/${projectId}/info/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            instructions,
+            notes
+          })
+        })
+        .then(r => r.json())
+        .then(d => {
+          if (d.ok) {
+            console.log("Project info updated");
+          }
+        });
+    }
+  </script>
+  <script></script>
+  <!--<script src="{% static 'jquery-visibility.js' %}"></script>
+  <script src="{% static 'ga.js' %}"></script>
+  <script src="{% static 'jquery.js' %}"></script>
+  <script src="{% static 'save_actions.js' %}"></script>
+  <script src="{% static 'project_base.js' %}"></script>
+  <script src="{% static 'account_nav.js' %}"></script>
+  <script>setTimeout(function(){console.clear(); console.log("Console is now cleared!")}, 9000);</script>-->
+</body>
+
+</html>

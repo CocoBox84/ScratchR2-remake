@@ -1,0 +1,64 @@
+{
+	"objName": "Outro",
+	"scripts": [[264.65, 212.75, [["whenIReceive", "Outro"], ["doForever", [["doPlaySoundAndWait", "Eggs"]]]]],
+		[38.65,
+			147.75,
+			[["whenIReceive", "Outro"],
+				["show"],
+				["comeToFront"],
+				["playSound:", "recording1"],
+				["doForever", [["nextCostume"], ["wait:elapsed:from:", 0.1]]]]],
+		[127.3, 53.3, [["whenGreenFlag"], ["hide"]]],
+		[747.3, 208.3, [["broadcast:", "Outro"]]]],
+	"sounds": [{
+			"soundName": "pop",
+			"soundID": -1,
+			"md5": "\u000223b68b028d8977cc0e2a71990ffcf4c.wav",
+			"sampleCount": 1123,
+			"rate": 11025,
+			"format": ""
+		},
+		{
+			"soundName": "Eggs",
+			"soundID": 0,
+			"md5": "\u0002bdf7ec4b3098b4b8a295583b6c1240d.wav",
+			"sampleCount": 732075,
+			"rate": 22050,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "costume1",
+			"baseLayerID": 0,
+			"baseLayerMD5": "\/de612b6ca8c9fb625080768b40401da.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 426,
+			"rotationCenterY": 332
+		},
+		{
+			"costumeName": "costume2",
+			"baseLayerID": 1,
+			"baseLayerMD5": "\/68eec4249a634ae580a9bac0ce06089.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 440,
+			"rotationCenterY": 286
+		},
+		{
+			"costumeName": "costume3",
+			"baseLayerID": 2,
+			"baseLayerMD5": "\/af68e0f9dedbdbbc9e726431094842e.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 440,
+			"rotationCenterY": 286
+		}],
+	"currentCostumeIndex": 0,
+	"scratchX": 0,
+	"scratchY": 0,
+	"scale": 0.8126410835214447,
+	"direction": 90,
+	"rotationStyle": "normal",
+	"isDraggable": false,
+	"indexInLibrary": 100000,
+	"visible": true,
+	"spriteInfo": {
+	}
+}

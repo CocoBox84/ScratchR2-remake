@@ -1,0 +1,138 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Scratch clone</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #ffffff;
+        }
+
+        #scratch-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #player {
+            width: 482px;
+            height: 425px;
+        }
+
+
+        #scratch {
+
+            visibility: visible;
+
+            display: block;
+
+            border: 0;
+            margin: 0;
+            padding: 0;
+
+
+            color: #322f31;
+            line-height: 1.5385em;
+            text-shadow: 0 1px #fff;
+
+            --wm-toolbar-height: 65px;
+
+            color: #211922;
+            font-family: "helvetica neue", arial, sans-serif;
+            font-size: 13px;
+
+            color: #000;
+            direction: ltr;
+            font: 81.25% 'Lucida Grande', arial, sans-serif;
+            font-family: "Lucida Grande", arial, sans-serif;
+            font-size: 81.25%;
+            line-height: normal;
+        }
+
+        #scratch.fullscreen {
+            display: block !important;
+            position: fixed !important;
+            z-index: 10000000000 !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+        }
+
+        #content {
+            padding: 50px 0 7em 0;
+        }
+
+        #topnav form.search .glass {
+            background: url("{% static 'nav-search-glass.png' %}") no-repeat 9px center !important;
+        }
+    </style>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <link href="{% static 'css/project_base.css' %}" rel="stylesheet">
+    <script src="{% static 'swfobject.js' %}"></script>
+</head>
+
+<body>
+    <div id="pagewrapper">
+        <div id="topnav">
+            <div class="innerwrap">
+                <div class="container">
+                    <a href="http://127.0.0.1:8000/" class="logo"><span class="scratch"></span></a>
+                    <ul class="site-nav">
+                        <li><a id="project-create" href="http://127.0.0.1:8000/projects/editor/?tip_bar=home">Create</a>
+                        </li>
+                        <li><a href="http://127.0.0.1:8000/explore/?date=this_month">Explore</a></li>
+                        <li><a href="http://127.0.0.1:8000/discuss/">Discuss</a></li>
+                        <li><a href="http://127.0.0.1:8000/about/">About</a></li>
+                        <li class="last"><a href="http://127.0.0.1:8000/help/">Help</a></li>
+                    </ul>
+
+                    <form class="search" action="http://127.0.0.1:8000/search/google_results/" method="get">
+                        <input class="glass" value="" type="submit">
+
+                        <input id="search-input" placeholder="Search" name="q" type="text">
+
+
+                        <input name="date" value="anytime" type="hidden">
+                        <input name="sort_by" value="datetime_shared" type="hidden">
+
+                    </form>
+                </div>
+            </div><!-- innerwrap -->
+        </div>
+        <div class="container" id="content">
+            {% block content %}
+            <h2>Search Users</h2>
+
+            <form method="get" action="{% url 'search_users' %}">
+                <input type="text" name="q" value="{{ query }}" placeholder="Search users..." size="40">
+                <button type="submit">Search</button>
+            </form>
+
+            <hr>
+
+            {% if query %}
+            <h3>Results for "{{ query }}"</h3>
+            {% if results %}
+            <ul>
+                {% for user in results %}
+                <li>
+                    <a href="{% url 'user_profile' user.username %}">{{ user.username }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <p>No users found.</p>
+            {% endif %}
+            {% endif %}
+            {% endblock %}
+        </div>
+    </div>
+</body>
+
+</html>

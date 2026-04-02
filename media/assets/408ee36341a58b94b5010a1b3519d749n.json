@@ -1,0 +1,177 @@
+{
+	"objName": "Bumpy Scratch Cat",
+	"scripts": [[95.3, 161.1, [["whenGreenFlag"]]],
+		[322.65, 170.55, [["whenIReceive", "message1"]]],
+		[106.65, 290.55, [["gotoX:y:", 0, 0], ["show"], ["lookLike:", "No Hat"]]],
+		[364.65,
+			285,
+			[["show"],
+				["gotoX:y:", 0, 0],
+				["goBackByLayers:", 1.79000000000000e+308],
+				["lookLike:", "1"],
+				["playSound:", "Low Whoosh"],
+				["doRepeat", 7, [["nextCostume"]]]]]],
+	"sounds": [{
+			"soundName": "pop",
+			"soundID": -1,
+			"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+			"sampleCount": 1123,
+			"rate": 11025,
+			"format": ""
+		},
+		{
+			"soundName": "Low Whoosh",
+			"soundID": -1,
+			"md5": "d42f096c89764484a442046f4342c9ad.wav",
+			"sampleCount": 12193,
+			"rate": 22050,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "costume2",
+			"baseLayerID": -1,
+			"baseLayerMD5": "5c026a17c5960640b9b470c7051c47b2.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 99,
+			"rotationCenterY": 114
+		},
+		{
+			"costumeName": "costume4",
+			"baseLayerID": -1,
+			"baseLayerMD5": "c6dd5842ef04acca562da5c060e4bd3e.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 125,
+			"rotationCenterY": 230
+		},
+		{
+			"costumeName": "Happy Head",
+			"baseLayerID": -1,
+			"baseLayerMD5": "3cb93af8fcc8e53fa59cc5d6e354e633.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 62,
+			"rotationCenterY": 97
+		},
+		{
+			"costumeName": "Happy Cat",
+			"baseLayerID": -1,
+			"baseLayerMD5": "b2624cc081353728038d3b3bbb6e7de0.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 99,
+			"rotationCenterY": 137
+		},
+		{
+			"costumeName": "Party Hat-a",
+			"baseLayerID": -1,
+			"baseLayerMD5": "2fac43d4b6b997ebf1dead0c2b1ad4b5.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 23,
+			"rotationCenterY": 54
+		},
+		{
+			"costumeName": "costume3",
+			"baseLayerID": -1,
+			"baseLayerMD5": "57ce4e7d82f4e639c8b6ebf5fc4d82da.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 99,
+			"rotationCenterY": 150
+		},
+		{
+			"costumeName": "No Hat",
+			"baseLayerID": -1,
+			"baseLayerMD5": "62bb023c960fe709ee265e9963570a3d.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 202,
+			"rotationCenterY": -2
+		},
+		{
+			"costumeName": "1",
+			"baseLayerID": -1,
+			"baseLayerMD5": "83cd7eca6cc1cb5c0a2de9aba0010e70.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 314,
+			"rotationCenterY": -178
+		},
+		{
+			"costumeName": "2",
+			"baseLayerID": -1,
+			"baseLayerMD5": "b5b64bccd21276456320391f74fe8423.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 314,
+			"rotationCenterY": -148
+		},
+		{
+			"costumeName": "3",
+			"baseLayerID": -1,
+			"baseLayerMD5": "9b9781577a6efc9b1d72c6056b72acb7.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 312,
+			"rotationCenterY": -121
+		},
+		{
+			"costumeName": "4",
+			"baseLayerID": -1,
+			"baseLayerMD5": "b70984ccb6c1a732e50cff27fb1a2684.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 312,
+			"rotationCenterY": -34
+		},
+		{
+			"costumeName": "5",
+			"baseLayerID": -1,
+			"baseLayerMD5": "fbffa48155d882a11b5985dc529a9bab.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 290,
+			"rotationCenterY": -17
+		},
+		{
+			"costumeName": "6",
+			"baseLayerID": -1,
+			"baseLayerMD5": "ed0e32ad21fc017150c2984f31399dad.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 257,
+			"rotationCenterY": -1
+		},
+		{
+			"costumeName": "7",
+			"baseLayerID": -1,
+			"baseLayerMD5": "e4502fbf896418dd5e87b28ead3813c3.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 222,
+			"rotationCenterY": 15
+		},
+		{
+			"costumeName": "8",
+			"baseLayerID": -1,
+			"baseLayerMD5": "551b449063873645623874af9e1f1786.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 202,
+			"rotationCenterY": 33
+		},
+		{
+			"costumeName": "9",
+			"baseLayerID": -1,
+			"baseLayerMD5": "95478fc22a92d7269c726f55f31984b2.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 117,
+			"rotationCenterY": 131
+		},
+		{
+			"costumeName": "10",
+			"baseLayerID": -1,
+			"baseLayerMD5": "d2faa6195942304e982a3aba342157e8.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 117,
+			"rotationCenterY": 131
+		}],
+	"currentCostumeIndex": 0,
+	"scratchX": 0,
+	"scratchY": 0,
+	"scale": 1,
+	"direction": 90,
+	"rotationStyle": "normal",
+	"isDraggable": false,
+	"indexInLibrary": 100000,
+	"visible": true,
+	"spriteInfo": {
+	}
+}

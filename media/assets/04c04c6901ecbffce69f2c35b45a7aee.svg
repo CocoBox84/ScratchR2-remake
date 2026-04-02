@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="120" height="167.69203186035156" viewBox="0.5 5.807961940765381 120 167.69203186035156">
+  
+  <path id="ID0.5336706163361669" fill="#666666" stroke="none" d="M 1 141 L 120 141 L 120 173 L 1 173 L 1 141 Z " stroke-width="1"/>
+  <text  fill="#E5E5E5" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.418423 0 0 0.418423 0.29079250000000023 -3.0565925)" stroke-width="1" alignment-baseline="text-before-edge"  >Of course, what is missing
+from a lot of scratch
+platformers are jump/
+drop through platforms.
+ 
+Have a play with this updated
+level... (use the s key too)</text>
+  <path id="ID0.5336706163361669" fill="#FFFFFF" stroke="none" d="M 1 138 L 120 138 L 120 170 L 1 170 L 1 138 Z " stroke-width="1"/>
+  <text  fill="#000000" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.57939 0 0 0.57939 6.710305 135.925475)" stroke-width="1" alignment-baseline="text-before-edge"  >Show Platforms?</text>
+</svg>

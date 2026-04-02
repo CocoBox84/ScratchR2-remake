@@ -1,0 +1,15 @@
+<svg version="1.1" width="355" height="219" viewBox="-1 -1 355 219" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <defs>
+    <linearGradient id="grad_1" x2="1">
+      <stop offset="0" stop-color="#0033CC" stop-opacity="1"/>
+      <stop offset="1" stop-color="#99B2FF" stop-opacity="1"/>
+    </linearGradient>
+  </defs>
+  <!-- Exported by Scratch - http://scratch.mit.edu/ -->
+  <g id="ID0.4153782366774976" transform="matrix(1, 0, 0, 1, -2, 0)">
+    <path id="ID0.8813339825719595" fill="#CCCCCC" stroke="#CCCCCC" stroke-width="2" d="M 58 169 L 408 169 L 408 353 L 58 353 L 58 169 Z " transform="matrix(1, 0, 0, 1, -55, -137)"/>
+    <path id="ID0.7206003065221012" fill="url(#grad_1)" stroke="#666666" stroke-width="2" d="M 58 138 L 409 138 L 409 171 L 58 171 L 58 138 Z " transform="matrix(1, 0, 0, 1, -55, -137)"/>
+    <text id="ID0.05100106215104461" fill="#FFFFFF" x="103" y="160.25" text-anchor="start" font-family="Helvetica" font-size="22" transform="matrix(1, 0, 0, 1, 46, 1.15)">Error:</text>
+    <text id="ID0.6935926745645702" fill="#FFFFFF" x="121" y="204.25" text-anchor="start" font-family="Helvetica" font-size="22" transform="matrix(1, 0, 0, 1, 49.5, 73.15)">Please Stop Pooping!</text>
+  </g>
+</svg>

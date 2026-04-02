@@ -1,0 +1,55 @@
+<li>
+  <div class="media-item-content {% if not project.isShared %}not-shared{% endif %}">
+    <!-- Thumbnail -->
+    <div class="media-thumb">
+      <a href="{% url 'project_page' project.id %}">
+        {% if project.thumbnail %}
+          <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}" width="100" height="80">
+        {% else %}
+          <img src="/static/project_placeholder.png" alt="{{ project.title }}" width="100" height="80">
+        {% endif %}
+      </a>
+    </div>
+
+    <!-- Info -->
+    <div class="media-info">
+      <span class="media-info-item title">
+        <a href="{% url 'project_page' project.id %}">{{ project.title }}</a>
+      </span>
+      <span class="media-info-item date shortDateFormat">
+        Last modified: {{ project.updated_at|date:"d M Y" }}
+      </span>
+      <a href="{% url 'project_page' project.id %}#editor"
+         data-control="edit"
+         class="media-control-edit small button grey">
+        <span>See inside</span>
+      </a>
+    </div>
+
+    <!-- Stats or Actions -->
+    {% if project.isShared == "true" %}
+      <div class="media-stats">
+        <span class="stat"><span class="icon-xs view black"></span>{{ project.views }}</span>
+        <span class="stat"><span class="icon-xs remix black"></span>{{ project.remixes.count }}</span>
+        <span class="stat"><span class="icon-xs love black"></span>{{ project.loves.count }}</span>
+        <span class="stat"><span class="icon-xs favorite black"></span>{{ project.favorites.count }}</span>
+        <span class="stat"><span class="icon-xs comment black"></span>{{ project.comments.count }}</span>
+        <span class="stat"><span class="icon-xs project black"></span>{{ project.remixes.count }}</span>
+        <a href="{% url 'unshare_project' project.id %}" class="unshare" data-control="unshare">Unshare</a>
+      </div>
+    {% elif project.isTrashed == "true" %}
+      <div class="media-action">
+        <a href="{% url 'permanently_delete' project.id %}"
+           onclick="return confirm('Are you sure you want to permanently delete this project?');">
+          Permanently Delete
+        </a>
+        <a href="{% url 'delete_project' project.id %}">Restore (Undelete)</a>
+      </div>
+    {% else %}
+      <div class="media-action">
+        <a href="{% url 'share_project' project.id %}">Share</a>
+        <a href="{% url 'delete_project' project.id %}">Delete</a>
+      </div>
+    {% endif %}
+  </div>
+</li>

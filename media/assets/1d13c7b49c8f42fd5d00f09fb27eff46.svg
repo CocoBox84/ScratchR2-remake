@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="62.832394215191506" height="59.98189983042588" viewBox="7.315151883798291 7.818151189523388 62.832394215191506 59.98189983042588">
+  <!-- Exported by Scratch - http://scratch.mit.edu/ -->
+  <path id="ID0.25220888014882803" fill="#703D00" stroke="#703D00" stroke-width="1.9868970838438487" d="M 36.3657 11.9102 L 46.4537 11.9102 L 46.4537 66.8066 L 36.3657 66.8066 L 36.3657 11.9102 Z "/>
+  <g id="ID0.2465350623242557">
+    <path id="ID0.6253776676021516" fill="#D78B17" stroke="#A85B00" stroke-width="1.6012692095255914" stroke-linecap="round" d="M 30.2715 8.8116 L 69.1541 24.6731 L 55.878 50.2619 L 18.8856 34.0009 L 8.3086 14.071 L 30.2715 8.8116 Z "/>
+    <text  fill="#000000" text-anchor="start" transform="matrix(0.589133 0.239017 -0.239017 0.589133 33.1920675 10.604812500000001)" stroke-width="1" font-family="Helvetica" alignment-baseline="text-before-edge"  font-size="18" >Wall</text>
+    <text  fill="#000000" text-anchor="start" transform="matrix(0.589133 0.239017 -0.239017 0.589133 23.9920675 20.2548325)" stroke-width="1" font-family="Helvetica" alignment-baseline="text-before-edge"  font-size="18" >Jump?</text>
+  </g>
+</svg>

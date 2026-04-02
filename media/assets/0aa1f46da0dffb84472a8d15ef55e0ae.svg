@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="341.953125" height="148.57485961914062" viewBox="0.7052299976348877 7.886231422424316 341.953125 148.57485961914062">
+  
+  <text  fill="#663B00" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.602613 0 0 0.602613 -0.3013024999999998 -4.6222075)" stroke-width="1" alignment-baseline="text-before-edge"  >Now... try walking into the wall to your right (using the 'd' key).
+Notice how our player just magically jumps right up to the top?
+So why is that? Well, the first thing to realise about a wall is
+that it is really just a very very steep slope! Our player has no
+limit on how high he can rise up a slope if he's touching it, so he
+just pings up to the top! Our next step is to create a limit...</text>
+</svg>

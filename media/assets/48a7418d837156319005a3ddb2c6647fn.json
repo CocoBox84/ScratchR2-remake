@@ -1,0 +1,40 @@
+{
+	"objName": "Blue Screen Of Death",
+	"scripts": [[104, 247, [["whenGreenFlag"], ["gotoX:y:", 0, 0], ["hide"]]],
+		[337, 281, [["whenIReceive", "Blue Screen Of Death"], ["playSound:", "Windows XP Criti"], ["comeToFront"], ["show"]]]],
+	"sounds": [{
+			"soundName": "pop",
+			"soundID": -1,
+			"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+			"sampleCount": 258,
+			"rate": 11025,
+			"format": ""
+		},
+		{
+			"soundName": "Windows XP Criti",
+			"soundID": -1,
+			"md5": "5e65db0b7637653f5e5908f0b4a47585.wav",
+			"sampleCount": 20340,
+			"rate": 22050,
+			"format": "adpcm"
+		}],
+	"costumes": [{
+			"costumeName": "Blue Screen Of Death",
+			"baseLayerID": -1,
+			"baseLayerMD5": "a9f24e2de1bbce56b2185320b509d7d5.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		}],
+	"currentCostumeIndex": 0,
+	"scratchX": 0,
+	"scratchY": 0,
+	"scale": 1,
+	"direction": 90,
+	"rotationStyle": "normal",
+	"isDraggable": false,
+	"indexInLibrary": 100000,
+	"visible": true,
+	"spriteInfo": {
+	}
+}

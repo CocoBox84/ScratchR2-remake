@@ -1,0 +1,55 @@
+{
+	"objName": "Edge Fade",
+	"scripts": [[26,
+			32.75,
+			[["whenIReceive", "setup level"], ["setGraphicEffect:to:", "brightness", 0], ["gotoX:y:", 0, 0], ["show"]]],
+		[25.3,
+			240.55,
+			[["whenIReceive", "to front"],
+				["doIf",
+					["=", ["getAttribute:of:", " toFront", "Game"], "11"],
+					[["comeToFront"], ["goBackByLayers:", 1]]]]],
+		[0,
+			0,
+			[["whenGreenFlag"],
+				["doIf",
+					[">",
+						["-", ["*", 86400, ["-", ["timestamp"], ["readVariable", "reset time"]]], ["timer"]],
+						"0.1"],
+					[["setVar:to:", "reset time", ["-", ["timestamp"], ["\/", ["timer"], 86400]]]]]]]],
+	"sounds": [{
+			"soundName": "pop",
+			"soundID": -1,
+			"md5": "83a9787d4cb6f3b7632b4ddfebf74367.wav",
+			"sampleCount": 1123,
+			"rate": 11025,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "fade",
+			"baseLayerID": -1,
+			"baseLayerMD5": "c27cc8145e689d530bd30bf28c8a7241.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 480,
+			"rotationCenterY": 360
+		},
+		{
+			"costumeName": "costume1",
+			"baseLayerID": -1,
+			"baseLayerMD5": "c7ba662bfee06f50d2053e8bde0e70b4.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 270,
+			"rotationCenterY": 180
+		}],
+	"currentCostumeIndex": 1,
+	"scratchX": 0,
+	"scratchY": 0,
+	"scale": 1,
+	"direction": 90,
+	"rotationStyle": "none",
+	"isDraggable": false,
+	"indexInLibrary": 100000,
+	"visible": true,
+	"spriteInfo": {
+	}
+}

@@ -1,0 +1,163 @@
+{
+	"objName": "Sprite1",
+	"scripts": [[171, 62, [["whenGreenFlag"], ["playSound:", "recording1"]]],
+		[246,
+			220,
+			[["whenGreenFlag"],
+				["lookLike:", "costume1"],
+				["wait:elapsed:from:", 0.1],
+				["doRepeat", 7, [["nextCostume"]]],
+				["wait:elapsed:from:", 0.8],
+				["lookLike:", "costume12"],
+				["wait:elapsed:from:", 1],
+				["lookLike:", "costume13"],
+				["broadcast:", "message1"]]],
+		[52, 247, [["whenIReceive", "ayo?"], ["lookLike:", "costume14"]]]],
+	"sounds": [{
+			"soundName": "meow",
+			"soundID": -1,
+			"md5": "83c36d806dc92327b9e7049a565c6bff.wav",
+			"sampleCount": 18688,
+			"rate": 22050,
+			"format": ""
+		},
+		{
+			"soundName": "recording1",
+			"soundID": -1,
+			"md5": "8bb4dfaf127695136bc1797fabd7612e.wav",
+			"sampleCount": 43009,
+			"rate": 22050,
+			"format": ""
+		},
+		{
+			"soundName": "recording2",
+			"soundID": -1,
+			"md5": "534424bae444bb2f15ad59e707ab5ede.wav",
+			"sampleCount": 7169,
+			"rate": 22050,
+			"format": ""
+		}],
+	"costumes": [{
+			"costumeName": "costume1",
+			"baseLayerID": -1,
+			"baseLayerMD5": "87e23d8e03e7b6254d4a0e55e4120400.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume5",
+			"baseLayerID": -1,
+			"baseLayerMD5": "fa11cc308f2cb2fbc4dea7990d634b38.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume3",
+			"baseLayerID": -1,
+			"baseLayerMD5": "790d4fb6796b005556365b7eba494dde.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume2",
+			"baseLayerID": -1,
+			"baseLayerMD5": "832412d16d831b6812350a665e08b4d7.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume4",
+			"baseLayerID": -1,
+			"baseLayerMD5": "083b63afd57d907c95a2d6575cd3d958.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume6",
+			"baseLayerID": -1,
+			"baseLayerMD5": "d51066274b8ce6fb4a58eca6b25251ec.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume7",
+			"baseLayerID": -1,
+			"baseLayerMD5": "501eb562c8ac494a0d569aca93e69bf0.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume8",
+			"baseLayerID": -1,
+			"baseLayerMD5": "d76f8b252065fc353303f68f998f48b9.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume9",
+			"baseLayerID": -1,
+			"baseLayerMD5": "24f0d804542ff45987436ef9bf40c153.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume10",
+			"baseLayerID": -1,
+			"baseLayerMD5": "5bafa2f04482c42824ccae03b1e0a357.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume11",
+			"baseLayerID": -1,
+			"baseLayerMD5": "5bafa2f04482c42824ccae03b1e0a357.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 47,
+			"rotationCenterY": 51
+		},
+		{
+			"costumeName": "costume12",
+			"baseLayerID": -1,
+			"baseLayerMD5": "68163f9d3532c323be045fc54722b9cd.png",
+			"bitmapResolution": 2,
+			"rotationCenterX": 314,
+			"rotationCenterY": 304
+		},
+		{
+			"costumeName": "costume13",
+			"baseLayerID": -1,
+			"baseLayerMD5": "b24fb827e971c0ed181ff410262d3523.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 15,
+			"rotationCenterY": 77
+		},
+		{
+			"costumeName": "costume14",
+			"baseLayerID": -1,
+			"baseLayerMD5": "f7d92553451f2344aae11c9579637169.svg",
+			"bitmapResolution": 1,
+			"rotationCenterX": 93,
+			"rotationCenterY": 77
+		}],
+	"currentCostumeIndex": 13,
+	"scratchX": 0,
+	"scratchY": 0,
+	"scale": 1,
+	"direction": 90,
+	"rotationStyle": "normal",
+	"isDraggable": false,
+	"indexInLibrary": 100000,
+	"visible": true,
+	"spriteInfo": {
+	}
+}

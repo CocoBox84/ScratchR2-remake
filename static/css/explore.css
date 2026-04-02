@@ -1,0 +1,102 @@
+.actionbar {text-align: right; border-top: 1px solid #e0e0e0; padding:5px;}
+.actionbar .dropdown{position: relative; z-index: 2; text-align:left;}
+div.row {margin:10px;overflow:hidden;}
+div.row ul{list-style-type: none;margin:0;}
+div.row li{display:inline-block;margin:0;}
+
+
+/*project specific*/
+div.row li.project{margin:0 3px; margin-bottom: 25px; width:32%;}
+li.project > a,
+li.project > span{display:block;}
+li.project:first-child{margin-left:0;}
+li.project:last-child{margin-right:0;}
+li.project img{width:100%; border: 1px solid #ccc; margin-bottom: -3px; border-bottom-left-radius: 3px; border-bottom-right-radius: 3px;}
+li.project .title {
+  font-weight:700;
+  text-overflow: ellipsis;
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+  height:20px;
+}
+
+li.project span.owner {
+  color: #999;
+  font-size: 12px;
+  margin-top: -3px;
+}
+
+li.project span.owner a {
+  color: #999;
+}
+
+li.project span.stats {
+  opacity: .7;
+  font-size: 11px;
+}
+
+li.project span.stats .icon-xs {
+  margin-right: 5px;
+  padding-left: 17px;  
+}
+
+/*studio specific*/
+ul.user-icons img{width:30px;height:30px; margin:5px;}
+ul.user-icons img:first-child{margin-left:0;}
+.row.studio{margin-top:30px;height:165px;}
+.row.studio:first-child {margin-top:0;}
+.row.studio .image,
+.row.studio .content {display:inline-block; vertical-align: top; overflow:hidden;}
+.row.studio .image {border: 1px solid #ccc; padding: 8px; padding-right: 10px; position:absolute;width:240px;text-align:center; margin-right: 10px;}
+.row.studio .image img {height: 130px; max-width: 230px; margin:5px 5px 0 5px;}
+.row.studio .image .filler {background-color: #eee; width: 100%; height: 100%; display: block; border: 1px solid #ccc;}
+.row.studio .icon-studio-outer{
+  vertical-align: top;
+  opacity: .9;
+  border-radius: 5px;
+  background-color: #333;
+  color: white;
+  position: absolute;
+  bottom: 11px;
+  right: 11px;
+  padding: 3px;
+}
+.row.studio .icon-studio {
+  background-size: 20px 12px;
+  padding: 1px 5px;
+  width: 15px;
+  height: 10px;
+}
+h3.studio-title{
+  line-height: 16px;
+  text-overflow: ellipsis;
+  display: block;
+  white-space: nowrap;
+  height:16px;
+}
+
+.row.studio .content {margin-left:270px;width:412px;}
+p.description{margin:0; width:412px; max-height:58px; overflow: hidden;}
+span.date {display: block; color: #666; font-size: 11px;}
+
+/*
+     FILE ARCHIVED ON 13:30:34 Jun 23, 2013 AND RETRIEVED FROM THE
+     INTERNET ARCHIVE ON 03:12:21 Oct 01, 2025.
+     JAVASCRIPT APPENDED BY WAYBACK MACHINE, COPYRIGHT INTERNET ARCHIVE.
+
+     ALL OTHER CONTENT MAY ALSO BE PROTECTED BY COPYRIGHT (17 U.S.C.
+     SECTION 108(a)(3)).
+*/
+/*
+playback timings (ms):
+  captures_list: 0.421
+  exclusion.robots: 0.015
+  exclusion.robots.policy: 0.007
+  esindex: 0.009
+  cdx.remote: 6.161
+  LoadShardBlock: 220.434 (3)
+  PetaboxLoader3.datanode: 153.811 (4)
+  PetaboxLoader3.resolve: 115.543 (2)
+  load_resource: 89.358
+*/

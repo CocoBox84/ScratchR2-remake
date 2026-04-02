@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="345.9062805175781" height="221.88087463378906" viewBox="0.7539999485015869 7.091058731079102 345.9062805175781 221.88087463378906">
+  
+  <text  fill="#663B00" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.477002 0 0 0.477002 0.06149500000000008 -3.2045250000000003)" stroke-width="1" alignment-baseline="text-before-edge"  >First lets talk about how to get a smooth cycle of the walking costumes. To do this
+we need to know:
+ 
+ * How many frames of animation are there in the
+   walk cycle? (In our case, that's 8)
+ 
+ * How fast do we want to change frames (If we
+   progress onto the next frame as fast as scratch
+   runs our game, then it will change 30 times every
+   second... that's too fast! We will change costumes
+   once every two frames to slow it down.</text>
+</svg>

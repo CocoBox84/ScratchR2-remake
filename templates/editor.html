@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Scratch Editor</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #000;
+        }
+
+        #scratch-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #scratch {
+            display: block;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+    </style>
+    <script src="{% static 'swfobject.js' %}"></script>
+</head>
+
+<body>
+    <!-- CSRF token for Django -->
+    <form id="csrf-form">{% csrf_token %}</form>
+
+    <!-- Container for the SWF -->
+    <div id="scratch-container"></div>
+
+    <script>
+        const localData = JSON.parse((localStorage.getItem("Scratch2Legacy"))) || {
+            user: {
+                name: "griffpatch",
+                id: 0
+            }
+        };
+        const csrftoken = document.querySelector('#csrf-form input[name="csrfmiddlewaretoken"]').value;
+        const username = (localData?.user?.name) ? localData.user.name : "";
+        const isLoggedIn = localData?.user?.name;
+
+        // API wrapper for AS calls into the SWF
+        const Scratch2API = {
+            swf: null,
+            attach(el) { this.swf = el; },
+            call(name, ...args) {
+                if (this.swf && typeof this.swf[name] === 'function') {
+                    try { return this.swf[name](...args); }
+                    catch (e) { console.error('AS call failed', name, e); }
+                }
+            },
+            setEditorMode(b) { this.call('ASsetEditMode', !!b); },
+            setLoginUser(u) { this.call('ASsetLoginUser', String(u)); },
+            setScratcher(b) { this.call('ASsetScratcher', !!b); },
+            setNewProject(id, title) { this.call('ASsetNewProject', id, title); },
+            projectChanged(b) { this.call('ASsetProjectChanged', !!b) },
+            AprilFools() { this.call("April's Idiots") }
+        };
+
+        /*const origFetch = window.fetch;
+        window.fetch = function (url, opts) {
+            return origFetch.apply(this, arguments).then(async resp => {
+                const text = await resp.clone().text();
+
+                if (/^\d+$/.test(text.trim())) {
+                    const newId = text.trim();
+                    console.log("Assigned new ID:", newId);
+
+                    // Redirect to project page in editor view
+                    window.location.href = `/projects/${newId}#editor`;
+                }
+
+                return resp;
+            });
+        };*/
+
+        // Called by SWF when a save succeeds and returns a new ID
+        /*window.JSprojectIdAssigned = function (newId) {
+            console.log("Assigned ID from SWF:", newId);
+            projectId = newId;
+            Scratch2API.setNewProject(newId, "Untitled");
+        };*/
+
+        const random = randomInt(0, 1000);
+        let projectId = random;
+
+        // Called by SWF when ready
+        window.JSeditorReady = function (info) {
+            console.log('SWF is ready:', info);
+            Scratch2API.setLoginUser((localData?.user?.name) ? localData.user.name : "");
+            //Scratch2API.setEditorMode(true);
+            //Scratch2API.AprilFools();
+            //Scratch2API.setNewProject(random, `Untitled-${random}`);
+            //Scratch2API.projectChanged(false);
+
+            /*setTimeout(function() {
+                Scratch2API
+            }, 100000);*/
+            Scratch2API.AprilFools();
+            return true;
+        };
+
+        function JSlogError(error) {
+            console.error(error);
+        }
+
+        // Step 1: Embed SWF with correct flashvars owner
+        function embedSWF() {
+            const flashvars = {
+                autostart: 'false',
+                project_isNew: "true",
+                project_id: `${(isLoggedIn) ? projectId : ""}`,
+                project_isPrivate: "true",
+                project_isPublished: "false",
+                project_creator: username,
+                urlOverrides: encodeURIComponent(JSON.stringify({
+                    sitePrefix: window.location.origin + '/',
+                    siteCdnPrefix: window.location.origin + '/cdn/',
+                    assetPrefix: window.location.origin + '/assets',
+                    assetCdnPrefix: window.location.origin + '/cdn.assets/',
+                    projectPrefix: window.location.origin + '/projects',
+                    projectCdnPrefix: window.location.origin + '/cdn.projects',
+                    internalAPI: '/internalapi/',
+                    siteAPI: '/site-api/'
+                }))
+            };
+
+            const params = {
+                allowscriptaccess: 'always',
+                allowfullscreen: 'true',
+                inIE: false,
+                wmode: 'direct',
+                menu: 'false',
+                flashvars: Object.entries(flashvars)
+                    .map(([k, v]) => `${k}=${v}`)
+                    .join('&')
+            };
+
+            const attributes = {
+                data: "{% static 'build/11.6/Scratch.swf' %}",
+                width: '100%',
+                height: '100%',
+                id: 'scratch'
+            };
+
+            const swfEl = swfobject.createSWF(attributes, params, 'scratch-container');
+            Scratch2API.attach(swfEl || document.getElementById('scratch'));
+        }
+
+        document.addEventListener("DOMContentLoaded", embedSWF);
+
+        function randomInt(min, max) {
+            return Math.floor(Math.random() * max) + min;
+        }
+
+        function isFools() {
+            return false;
+        }
+
+        function JSlogin() {
+            Scratch2API.setLoginUser("ScratchUser206827");
+        }
+
+        // Redirect hook for SWF
+        window.JSredirectTo = function (link, force, project) {
+            console.log(link);
+            switch (link) {
+                case "home":
+                    window.location.assign(`${window.location.origin}/`);
+                    return;
+                    break;
+                case "settings":
+                    window.location.assign(`${window.location.origin}/account-settings`);
+                    return;
+                    break;
+            }
+            if (!force) {
+                window.location.assign(`${window.location.origin}/${link}/`);
+            } else {
+                window.location.assign(`${window.location.origin}/projects/${link}/?tip_bar=${new URLSearchParams(window.location.search).get("tip_bar")}#editor`);
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="382.1875" height="95.95236206054688" viewBox="0.7539999485015869 7.091058731079102 382.1875 95.95236206054688">
+  
+  <text  fill="#663B00" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.477002 0 0 0.477002 0.06149500000000008 -3.2045250000000003)" stroke-width="1" alignment-baseline="text-before-edge"  >Have you notices that our cat player can get his whiskers/face caught on the edge
+of a platform? To make it more obvious I've made his head bigger *grin*.
+So why does this happen? Well, when we use the 'touching (ground)' sensing block, we are
+testing that any part of the players costume is touching, so this includes whiskers and
+any other part that sticks out!</text>
+</svg>

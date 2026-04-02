@@ -1,0 +1,329 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Scratch clone</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: #ffffff;
+    }
+
+    /*#scratch {
+
+      visibility: visible;
+
+      display: block;
+
+      border: 0;
+      margin: 0;
+      padding: 0;
+
+
+      color: #322f31;
+      line-height: 1.5385em;
+      text-shadow: 0 1px #fff;
+
+      --wm-toolbar-height: 65px;
+
+      color: #211922;
+      font-family: "helvetica neue", arial, sans-serif;
+      font-size: 13px;
+
+      color: #000;
+      direction: ltr;
+      font: 81.25% 'Lucida Grande', arial, sans-serif;
+      font-family: "Lucida Grande", arial, sans-serif;
+      font-size: 81.25%;
+      line-height: normal;
+    }*/
+
+    #scratch.fullscreen {
+      display: block !important;
+      position: fixed !important;
+      z-index: 10000000000 !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+    }
+
+    #content {
+      padding: 50px 0 7em 0;
+    }
+
+    #topnav form.search .glass {
+      background: url("{% static 'nav-search-glass.png' %}") no-repeat 9px center !important;
+    }
+  </style>
+  <link href="{% static 'css/main.css' %}" rel="stylesheet">
+  <link href="{% static 'css/search.css' %}" rel="stylesheet">
+  <script src="{% static 'swfobject.js' %}"></script>
+</head>
+
+<body>
+  <div id="pagewrapper">
+    <div id="topnav">
+      <div class="innerwrap">
+        <div class="container">
+          <a href="http://127.0.0.1:8000/" class="logo"><span class="scratch"></span></a>
+          <ul class="site-nav">
+            <li><a id="project-create" href="http://127.0.0.1:8000/projects/editor/?tip_bar=home">Create</a>
+            </li>
+            <li><a href="http://127.0.0.1:8000/explore/?date=this_month">Explore</a></li>
+            <li><a href="http://127.0.0.1:8000/discuss/">Discuss</a></li>
+            <li><a href="http://127.0.0.1:8000/about/">About</a></li>
+            <li class="last"><a href="http://127.0.0.1:8000/help/">Help</a></li>
+          </ul>
+
+          <form class="search" action="http://127.0.0.1:8000/search/google_results/" method="get">
+            <input class="glass" value="" type="submit">
+
+            <input id="search-input" placeholder="Search" name="q" type="text">
+
+
+            <input name="date" value="anytime" type="hidden">
+            <input name="sort_by" value="datetime_shared" type="hidden">
+
+          </form>
+        </div>
+      </div><!-- innerwrap -->
+    </div>
+    <div class="container" id="content">
+      <div class="cols">
+  <!-- Sidebar -->
+  <div class="col-3">
+    <div class="box v-tabs">
+      <div class="tabs-index">
+        <ul id="side_tabs">
+          <li id="all_results" class="first {% if tab == 'all' %}active{% endif %}">
+            <a href="{% url 'search' %}?type=all&q={{ query|urlencode }}">All Results</a>
+          </li>
+          <li id="projects" class="{% if tab == 'projects' %}active{% endif %}">
+            <a href="{% url 'search' %}?type=projects&q={{ query|urlencode }}">Projects</a>
+          </li>
+          <li id="galleries" class="{% if tab == 'studios' %}active{% endif %}">
+            <a href="{% url 'search' %}?type=studios&q={{ query|urlencode }}">Studios</a>
+          </li>
+          <li id="users" class="{% if tab == 'users' %}active{% endif %}">
+            <a href="{% url 'search' %}?type=users&q={{ query|urlencode }}">Users</a>
+          </li>
+          <li id="support">
+            <a href="#">Support</a>
+          </li>
+        </ul>
+        <a class="last" href="/discuss/search/" style="margin-left:20px; margin-top:10px; display:inline-block;">Forums</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main content -->
+  <div class="col-13">
+    <div class="box">
+      <div class="box-head">
+        <h3>
+          {% if tab == "projects" %}Projects{% elif tab == "users" %}Users{% elif tab == "studios" %}Studios{% else %}All Results{% endif %}
+        </h3>
+        <a href="{% url 'search' %}?type={{ tab }}&q={{ query|urlencode }}&sort={{ sort }}&date={{ date }}">View all</a>
+      </div>
+
+      <div class="box-content v-tabs-content">
+        <form method="get" action="{% url 'search' %}">
+          <!--<input type="hidden" name="type" value="{{ tab }}">
+          <input type="text" name="q" value="{{ query }}" placeholder="Search..." size="40">
+
+          {% if tab == "projects" %}
+            <div class="dropdown select button grey small sort-by">
+              <span class="dropdown-toggle black" data-toggle="dropdown">
+                <span class="selected">
+                  {% if sort == "views" %}Most viewed{% elif sort == "loves" %}Most loved{% else %}Newest{% endif %}
+                </span>
+                <span class="caret"></span>
+              </span>
+              <div class="dropdown-menu radio-style">
+                <ul id="order-by">
+                  <li onclick="window.location='?type=projects&q={{ query|urlencode }}&sort=newest'">Newest</li>
+                  <li onclick="window.location='?type=projects&q={{ query|urlencode }}&sort=views'">Most viewed</li>
+                  <li onclick="window.location='?type=projects&q={{ query|urlencode }}&sort=loves'">Most loved</li>
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+
+          <button type="submit" class="button grey small">Search</button>-->
+
+          <!-- Results -->
+          <div class="search_results">
+            <ul id="results_list">
+              {% if tab == "projects" %}
+                {% for project in results %}
+                  <li class="result project" id="{{ project.id }}" title="{{ project.title }}" creator="{{ project.owner.username }}">
+                    <div class="preview">
+                      <img src="{% static 'images/flagincircle2.png' %}" width="30px">
+                    </div>
+                    <div class="thumb">
+                      <a href="{% url 'project_page' project.id %}">
+                        {% if project.thumbnail %}
+                          <img src="{{ project.thumbnail.url }}" alt="{{ project.title }}">
+                        {% else %}
+                          <div style="width:160px; height:120px; background:#ddd;"></div>
+                        {% endif %}
+                      </a>
+                    </div>
+                    <div class="info">
+                      <span class="title">
+                        <a href="{% url 'project_page' project.id %}">{{ project.title }}</a>
+                      </span>
+                      <span class="creator">by <a href="{% url 'user_profile' project.owner.username %}">{{ project.owner.username }}</a></span>
+                      <span class="date">{{ project.created_at|date:"m/d/Y" }}</span>
+                      <div class="stats">
+                        <span class="icon-sm favorite black">{{ project.favorites.count|default:0 }}</span>
+                        <span class="icon-sm love black">{{ project.loves.count }}</span>
+                        <span class="icon-sm view black">{{ project.views }}</span>
+                        <span class="icon-sm remix black">{{ project.remixes.count|default:0 }}</span>
+                        <span class="icon-sm comment black">{{ project.comments.count|default:0 }}</span>
+                      </div>
+                    </div>
+                  </li>
+                {% empty %}
+                  <p>No projects found.</p>
+                {% endfor %}
+              {% elif tab == "users" %}
+                <ul>
+                  {% for user in results %}
+                    <li><a href="{% url 'user_profile' user.username %}">{{ user.username }}</a></li>
+                  {% empty %}
+                    <p>No users found.</p>
+                  {% endfor %}
+                </ul>
+              {% elif tab == "studios" %}
+                <ul>
+                  {% for studio in results %}
+                    <li><a href="{% url 'studio_page' studio.id %}">{{ studio.title }}</a></li>
+                  {% empty %}
+                    <p>No studios found.</p>
+                  {% endfor %}
+                </ul>
+              {% endif %}
+            </ul>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+  <script src="/static/swfobject.js"></script>
+  <script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll(".result.project .preview img").forEach(btn => {
+    btn.addEventListener("click", function(e) {
+      e.preventDefault();
+      const li = this.closest("li.result.project");
+
+      // close any other open preview
+      document.querySelectorAll("li.result.project.preview_mode").forEach(openLi => {
+        openLi.classList.remove("preview_mode");
+        const player = openLi.querySelector("#search_preview_player");
+        if (player) player.remove();
+      });
+
+      // open this one
+      li.classList.add("preview_mode");
+      const playerDiv = document.createElement("div");
+      playerDiv.id = "search_preview_player";
+      playerDiv.style.width = "300px";
+      playerDiv.style.height = "248px";
+
+      const playerBox = document.createElement("box");
+      playerBox.id = "search_preview_player_box";
+      playerBox.style.width = "300px";
+      playerBox.style.height = "248px";
+
+      const projectId = li.getAttribute("id");
+const projectTitle = li.getAttribute("title");
+const projectOwner = li.getAttribute("creator");
+
+const flashvars = {
+  autostart: 'true',
+  project_id: projectId,
+  project_title: projectTitle,
+  project_isPublished: 'true',
+  project_creator: projectOwner,
+  urlOverrides: encodeURIComponent(JSON.stringify({
+    sitePrefix: window.location.origin + '/',
+    siteCdnPrefix: window.location.origin + '/cdn/',
+    assetPrefix: window.location.origin + '/assets/',
+    assetCdnPrefix: window.location.origin + '/cdn.assets/',
+    projectPrefix: window.location.origin + '/projects/',
+    projectCdnPrefix: window.location.origin + '/cdn.projects/',
+    internalAPI: 'internalapi/',
+    siteAPI: 'site-api/'
+  }))
+};
+
+const params = {
+  allowscriptaccess: 'always',
+  allowfullscreen: 'always',
+  wmode: 'direct',
+  menu: 'false',
+  flashvars: Object.entries(flashvars)
+    .map(([k,v]) => `${k}=${v}`).join('&')
+};
+
+const attributes = {
+  data: '/static/build/11.6/Scratch.swf',
+  width: '100%',
+  height: '100%',
+  id: 'scratch'
+};
+
+playerDiv.id = "search_preview_player";
+playerDiv.appendChild(playerBox);
+li.appendChild(playerDiv);
+
+swfobject.createSWF(attributes, params, playerBox.id);
+
+      li.appendChild(playerDiv);
+    });
+  });
+});
+
+    const Scratch2API = {
+      swf: null,
+      attach(el) { this.swf = el; },
+      call(name, ...args) {
+        if (this.swf && typeof this.swf[name] === 'function') {
+          try { return this.swf[name](...args); }
+          catch (e) { console.error('AS call failed', name, e); }
+        }
+      },
+      setEditorMode(b) { this.call('ASsetEditMode', !!b); },
+      setLoginUser(u) { this.call('ASsetLoginUser', String(u)); },
+      setScratcher(b) { this.call('ASsetScratcher', !!b); },
+      setNewProject(id, title) { this.call('ASsetNewProject', id, title); },
+      remixProject() { this.call("ASremixProject") },
+      shareProject(b) { this.call("ASsetShared", !!b) },
+      downloadProject() { this.call("ASdownload") },
+      loadProject(owner, id, title, shared, autostart) { this.call("ASloadProject", owner, id, title, shared, autostart) },
+      setPresentationMode(b) { this.call("ASsetPresentationMode", !!b) },
+      isEditor() { return this.call("ASisEditMode") },
+      setEmbedMode(b) { this.call("ASsetEmbedMode", !!b) },
+      AprilFools() { this.call("April's Idiots") }
+    };
+
+function JSeditorReady() {
+  Scratch2API.attach(document.getElementById("scratch"));
+  Scratch2API.call("ASsetEmbedMode", true);
+  return true;
+}
+</script>
+</body>
+
+</html>

@@ -1,0 +1,419 @@
+! views.py
+
+import os
+import re
+import json
+import logging
+from django.conf import settings
+from django.utils.timezone import now
+from django.http import (
+    JsonResponse, HttpResponse, HttpResponseBadRequest,
+    HttpResponseNotFound, FileResponse
+)
+from django.http import HttpResponse, Http404
+import os
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.shortcuts import get_object_or_404
+from .models import Project
+from django.contrib import admin
+from django.urls import path, re_path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from django.views.decorators.csrf import ensure_csrf_cookie
+
+from .models import Project
+
+logger = logging.getLogger(__name__)
+SAFE_ASSET_RE = re.compile(r'[^A-Za-z0-9\.\-_]')
+
+# --- Core Project Handlers ---
+
+import base64
+
+import re
+
+def clean_asset_id(asset_id: str) -> str:
+    # keep only hex digits + dot + extension
+    newID = re.sub(r'[^0-9a-fA-F].', '', asset_id); print(newID)
+    return newID
+
+@csrf_exempt
+def new_project_set(request):
+    if request.method != 'POST':
+        return JsonResponse({"ok": False}, status=405)
+
+    proj = Project.objects.create(
+        title="Untitled",
+        owner=None,
+        data=request.body
+    )
+
+    encoded_title = base64.b64encode(proj.title.encode('utf-8')).decode('utf-8')
+
+    return JsonResponse({
+        "status": "ok",
+        "autosave-interval": 120,
+        "content-title": encoded_title,
+        "content-name": str(proj.id)
+    })
+
+'''@csrf_exempt
+def set_project_data(request, project_id):
+    print("set method called")
+    if request.method != 'POST':
+        print("Not a post method")
+        return JsonResponse({"ok": False}, status=405)
+    
+    proj = Project.objects.create(
+        title=request.GET.get("title", "Untitled"),
+        data=request.body
+    )
+
+    print("goes down here!")
+    return JsonResponse({
+    "status": "ok",
+    "autosave-interval": 120,
+    "content-title": base64.b64encode(proj.title.encode("utf-8")).decode("utf-8"),
+    "content-name": str(proj.id)
+})
+
+    #return HttpResponse("true", status=200)'''
+
+@csrf_exempt
+def save_project(request, project_id=None):
+    pid = project_id
+    print(f"Data: {request.body}")
+    if request.method != 'POST':
+        return HttpResponse("false", content_type="text/plain", status=405)
+
+    if not pid:  # first save, no ID yet
+        proj = Project.objects.create(
+            title="Untitled-1",
+            owner=None,
+            data=request.body
+        )
+        return JsonResponse({
+    "status": "ok",
+    "autosave-interval": 120,
+    "content-title": base64.b64encode(proj.title.encode("utf-8")).decode("utf-8"),
+    "content-name": str(proj.id)
+})
+
+    # Normal update
+    proj = get_object_or_404(Project, pk=pid)
+    proj.data = request.body
+    proj.save()
+    return JsonResponse({
+    "status": "ok",
+    "autosave-interval": 120,
+    "content-title": base64.b64encode(proj.title.encode("utf-8")).decode("utf-8"),
+    "content-name": str(proj.id)
+})
+ 
+
+@csrf_exempt
+@require_POST
+def set_project_thumbnail(request, project_id):
+    if not request.body:
+        return HttpResponseBadRequest("No image data")
+
+    project = get_object_or_404(Project, pk=project_id)
+    filename = f"thumb_{project_id}.png"
+    project.thumbnail.save(filename, request.FILES.get('file') or request, save=True)
+
+    return HttpResponse("ok")
+
+
+# --- Metadata & Session ---
+
+'''@csrf_exempt
+def session_info(request):
+    return JsonResponse({
+        "user": {
+            "username": "ScratchUser206826",
+            "id": 1,
+            "permissions": {"Scratchers": "true", "student": "true"}
+        }
+    })'''
+
+
+@csrf_exempt
+def get_preferred_language(request):
+    return JsonResponse({"language": "en"})
+
+
+@csrf_exempt
+def project_meta(request, proj_id):
+    return JsonResponse({
+        "id": proj_id,
+        "title": f"Local Project {proj_id}",
+        "creator": "LocalUser",
+        "description": "A test project hosted locally",
+        "modified": "2025-08-20T20:00:00Z"
+    })
+
+@csrf_exempt
+def swf_settings(request):
+    return JsonResponse({
+        "user_is_social": "true",
+        "user_admin": "true",
+        "user_groups": ["Scratchers"],
+        "autosave_interval": 120,
+                "permissions": [
+            "student",
+            "educator"
+        ],
+    })
+
+@csrf_exempt
+def get_session(request=""):
+    return JsonResponse({
+        "user": {"username": "ScratchUser206826",
+        "permissions": [
+            "student",
+            "educator"
+        ],
+        "user_groups": "Scratchers",
+        "flags": {}
+    }
+    })
+
+# Backpack
+
+# In-memory store for testing
+BACKPACK = {}
+
+@csrf_exempt
+def backpack_get(request, username):
+    return JsonResponse(BACKPACK.get(username, []), safe=False)
+
+@csrf_exempt
+def backpack_set(request, username):
+    try:
+        import json
+        items = json.loads(request.body.decode('utf-8'))
+    except Exception:
+        items = []
+    BACKPACK[username] = items
+    return HttpResponse("ok")
+
+@csrf_exempt
+def log_add_item_to_backpack(request):
+    # You can just ignore or log it
+    return HttpResponse("ok")
+
+@csrf_exempt
+def log_delete_item_from_backpack(request):
+    # Same idea: just acknowledge
+    return HttpResponse("ok")
+
+# --- Asset Handling ---
+
+@csrf_exempt
+def asset_set(request, asset_id):
+    print(f"Raw asset id: {asset_id}")
+    assetExt = asset_id.split('.')[-1]
+    asset_id = clean_asset_id(asset_id) + "." + assetExt
+    if request.method != 'POST':
+        return HttpResponse(status=405)
+
+    cleaned_id = SAFE_ASSET_RE.sub('', asset_id)
+    assets_dir = os.path.join(settings.MEDIA_ROOT, 'assets')
+    os.makedirs(assets_dir, exist_ok=True)
+
+    file_path = os.path.join(assets_dir, cleaned_id)
+    with open(file_path, 'wb') as f:
+        f.write(request.body)
+
+    return HttpResponse("true", content_type="text/plain")
+
+@csrf_exempt
+def asset_get(request, asset_id):
+    assetExt = asset_id.split('.')[-1]
+    asset_id = clean_asset_id(asset_id) + "." + assetExt
+    print(asset_id)
+    file_path = os.path.join(settings.MEDIA_ROOT, 'assets', asset_id)
+    if not os.path.exists(file_path):
+        return HttpResponseNotFound("asset not found")
+    
+    print("Getting asset")
+
+    ext = asset_id.lower().split('.')[-1]
+    content_type = {
+        'svg': 'image/svg+xml',
+        'png': 'image/png',
+        'wav': 'audio/wav',
+        'mp3': 'audio/mpeg'
+    }.get(ext, 'application/octet-stream')
+
+    with open(file_path, 'rb') as f:
+        return HttpResponse(f.read())
+    
+@csrf_exempt
+def get_asset(request, asset_id):
+    """
+    Serve an asset file (SVG, PNG, WAV, MP3) from MEDIA_ROOT/assets/<asset_id>.
+    """
+    assetExt = asset_id.split('.')[-1]
+    asset_id = clean_asset_id(asset_id) + "." + assetExt
+    print(asset_id)
+    file_path = os.path.join(settings.MEDIA_ROOT, 'assets', asset_id)
+    if not os.path.exists(file_path):
+        return HttpResponseNotFound("asset not found")
+    
+    print("Getting asset")
+
+    ext = asset_id.lower().split('.')[-1]
+    content_type = {
+        'svg': 'image/svg+xml',
+        'png': 'image/png',
+        'wav': 'audio/wav',
+        'mp3': 'audio/mpeg'
+    }.get(ext, 'application/octet-stream')
+
+    with open(file_path, 'rb') as f:
+        return HttpResponse(f.read())
+
+@csrf_exempt
+def project_json(request, proj_id):
+    project_path = os.path.join(settings.STATIC_ROOT, f'projects/{proj_id}.json')
+    if os.path.exists(project_path):
+        return FileResponse(open(project_path, 'rb'), content_type='application/json')
+    return JsonResponse({"error": "Project not found"}, status=404)
+
+
+@csrf_exempt
+def crossdomain_policy(request):
+    xml = """<?xml version="1.0"?>
+<!DOCTYPE cross-domain-policy SYSTEM "http://www.macromedia.com/xml/dtds/cross-domain-policy.dtd">
+<cross-domain-policy>
+  <allow-access-from domain="*" secure="false"/>
+</cross-domain-policy>"""
+    return HttpResponse(xml, content_type="application/xml")
+
+@csrf_exempt
+def project_run(request, project_id):
+    return None
+
+@csrf_exempt
+def project_page(request, project_id):
+    project = get_object_or_404(Project, pk=project_id)
+    return render(request, "project.html", {"project": project})
+
+
+@csrf_exempt
+def get_project(request, pid, token):
+    print(f"Geting project with id: {pid}")
+    proj = get_object_or_404(Project, pk=pid)
+    print("Got project")
+    print()
+    # For now, ignore the token or validate it if you want
+    if not proj.data:
+        print("empty project")
+        return HttpResponse("{}", content_type="application/json")
+    print("Responded with saved data.")
+    print(proj.data)
+    return HttpResponse(proj.data, content_type="application/json")
+
+
+
+! models.py
+
+from django.db import models
+from django.contrib.auth.models import User
+
+class Project(models.Model):
+    title = models.CharField(max_length=255, default="Untitled")
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    data = models.BinaryField(blank=True, null=True)  # store .sb2 zip or JSON
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/', null=True, blank=True)
+    #data = models.JSONField(default=dict, blank=True)
+    modified = models.DateTimeField(auto_now=True)  # <-- this is the magic
+
+
+    def __str__(self):
+        return self.title or f"Project {self.id}"
+
+
+! urls.py
+
+from django.contrib import admin
+from django.urls import path, re_path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.shortcuts import render
+from django.views.decorators.csrf import csrf_exempt
+
+from projects import views
+
+def editor_page(request):
+    print("Editor page")
+    return render(request, "editor.html")
+
+urlpatterns = [
+    # Admin
+    path('admin/', admin.site.urls),
+
+    # Editor page
+    path('projects/editor/', editor_page, name='editor_page'),
+
+    # Project page
+    path("projects/<int:project_id>/", views.project_page, name="project_page"),
+
+    # Project creation
+    re_path(r'^(?:projects/)?internalapi/project/new/set/$', views.new_project_set, name='new_project_set'),
+
+    # Project save data
+    re_path(r'^(?:projects/)?internalapi/project/(?P<project_id>\d+)/set/$', views.save_project, name='save_project'),
+
+    # Project thumbnail
+    re_path(r'^(?:projects/)?internalapi/project/(?P<project_id>\d+)/thumbnail/set/$', views.set_project_thumbnail, name='set_project_thumbnail'),
+
+    # Old “save” route
+    path('project/<int:project_id>/set/', views.save_project, name='save_project'),
+
+    # Project metadata & JSON
+    path('site-api/i1/project/<int:proj_id>/get/', views.project_meta),
+    path('internalapi/project/<int:proj_id>/get/', views.project_json),
+
+    # Asset serving (fixed: asset_get)
+    path('internalapi/asset/<str:asset_id>/get/', views.asset_get),
+
+    # Crossdomain policy for Flash
+    path('crossdomain.xml', views.crossdomain_policy),
+
+    # Misc endpoints
+    path('site-api/i18n/get-preferred-language/', views.get_preferred_language),
+    path("internalapi/backpack/<str:username>/get/", views.backpack_get),
+    path("internalapi/backpack/<str:username>/set/", views.backpack_set),
+    path("log/add-item-to-backpack/", views.log_add_item_to_backpack),
+    path("log/delete-item-from-backpack/", views.log_delete_item_from_backpack),
+    path('internalapi/swf-settings/', views.swf_settings),
+    path("site-api/auth/get-session", views.get_session),
+    #path('session/', views.session_info),
+    path('session/', views.get_session),
+    path('cdn/scratchr2/static/locale/lang_list.txt', views.get_preferred_language),
+
+    # Asset set/get
+    path('assets/internalapi/asset/<str:asset_id>/set/', views.asset_set, name='asset_set'),
+    path('assets/internalapi/asset/<str:asset_id>/get/', views.asset_get, name='asset_get'),
+    re_path(r"^assets//?internalapi/asset//?(?P<asset_id>[^/]+)/set/$", views.asset_set),
+
+    # Get project
+    path("cdn.projects/internalapi/project/<int:pid>/get/<str:token>/", views.get_project, name="get_project"),
+
+    # Get project asset
+    re_path(r"^cdn.assets//?internalapi/asset/(?P<asset_id>[^/]+)/get/$", views.get_asset),
+    #path("projects/<int:project_id>/run/", views.project_run, name="project_run"),
+
+    # Alternate project data route without "/set/"
+    re_path(r'^(?:projects/)?internalapi/project/(?P<project_id>\d+)/$', views.save_project, name='set_project_data_noset'),
+]
+
+# Serve uploaded media in dev
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

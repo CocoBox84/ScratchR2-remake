@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="18.791000366210938" height="30.75" viewBox="-0.3499999940395355 0.050000011920928955 18.791000366210938 30.75">
+  <defs>
+    <linearGradient id="grad_1" x1="6.6094" y1="29.3457" x2="11.1929" y2="0.4061" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#BC5B00"/>
+      <stop offset="0.5211" stop-color="#E5B400"/>
+      <stop offset="0.7606" stop-color="#E5CDCD"/>
+      <stop offset="1" stop-color="#E5B400"/>
+    </linearGradient>
+    <linearGradient id="grad_2" x1="112.793" y1="9.6753" x2="102.3913" y2="20.077" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFDA4C"/>
+      <stop offset="0.5459" stop-color="#FFFF4C"/>
+      <stop offset="0.6083" stop-color="#FFFF71"/>
+      <stop offset="0.7039" stop-color="#FFFFA3"/>
+      <stop offset="0.794" stop-color="#FFFFCB"/>
+      <stop offset="0.8761" stop-color="#FFFFE8"/>
+      <stop offset="0.9474" stop-color="#FFFFF9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient>
+  <linearGradient id="grad_1-,0,0,1,0.15,0.55" x1="6.7594" y1="29.8957" x2="11.3429" y2="0.9561" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#BC5B00"/>
+      <stop offset="0.5211" stop-color="#E5B400"/>
+      <stop offset="0.7606" stop-color="#E5CDCD"/>
+      <stop offset="1" stop-color="#E5B400"/>
+    </linearGradient><linearGradient id="grad_2-,0,0,1,0.15,0.55" x1="112.943" y1="10.2253" x2="102.5413" y2="20.627" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFDA4C"/>
+      <stop offset="0.5459" stop-color="#FFFF4C"/>
+      <stop offset="0.6083" stop-color="#FFFF71"/>
+      <stop offset="0.7039" stop-color="#FFFFA3"/>
+      <stop offset="0.794" stop-color="#FFFFCB"/>
+      <stop offset="0.8761" stop-color="#FFFFE8"/>
+      <stop offset="0.9474" stop-color="#FFFFF9"/>
+      <stop offset="1" stop-color="#FFFFFF"/>
+    </linearGradient></defs>
+  <!-- Exported by Scratch - http://scratch.mit.edu/ -->
+  <g id="ID0.7630323679186404">
+    <g id="ID0.10852426895871758">
+      <path id="ID0.39308031275868416" fill="url(#grad_1-,0,0,1,0.15,0.55)" d="M 6.349 29.8 C 3.153 29.8 0.65 23.486 0.65 15.425 C 0.65 7.364 3.153 1.05 6.349 1.05 C 6.404 1.05 11.826 1.05 11.886 1.053 C 15.055 1.243 17.441 7.422 17.441 15.425 C 17.441 23.461 15.044 29.64 11.865 29.796 C 11.812 29.8 6.404 29.8 6.349 29.8 L 6.349 29.8 Z " stroke-width="1"/>
+      <path id="ID0.17030890937894583" fill="#A86700" d="M 6.349 1.55 C 6.388 1.55 11.822 1.551 11.861 1.553 C 14.677 1.722 16.941 7.867 16.941 15.425 C 16.941 23 14.668 29.157 11.84 29.297 C 11.808 29.299 6.382 29.3 6.349 29.3 C 3.478 29.3 1.15 23.088 1.15 15.425 C 1.15 7.762 3.478 1.55 6.349 1.55 M 6.349 0.55 C 2.323 0.55 0.15 8.214 0.15 15.425 C 0.15 22.636 2.323 30.3 6.349 30.3 C 9.981 30.3 11.848 30.298 11.901 30.295 C 15.863 30.1 17.941 22.666 17.941 15.425 C 17.941 8.215 15.873 0.792 11.92 0.555 C 11.828 0.55 6.573 0.55 6.349 0.55 L 6.349 0.55 Z " stroke-width="1"/>
+    </g>
+    <path id="ID0.7057899655774236" fill="url(#grad_2-,0,0,1,0.15,0.55)" d="M 6.35 5.688 C 7.357 5.688 8.27 6.779 8.93 8.542 C 9.591 10.304 10 12.739 10 15.425 C 10 18.111 9.591 20.546 8.93 22.308 C 8.27 24.071 7.357 25.162 6.35 25.162 C 5.343 25.162 4.43 24.071 3.77 22.308 C 3.109 20.546 2.7 18.111 2.7 15.425 C 2.7 12.739 3.109 10.304 3.77 8.542 C 4.43 6.779 5.343 5.688 6.35 5.688 Z " stroke-width="1"/>
+    <path id="ID0.9265933660790324" fill="#FFF360" d="M 6.805 6.659 C 7.423 6.659 7.984 7.641 8.389 9.228 C 8.795 10.815 9.046 13.007 9.046 15.425 C 9.046 17.843 8.795 20.035 8.389 21.622 C 7.984 23.209 7.423 24.191 6.805 24.191 C 6.187 24.191 5.626 23.209 5.221 21.622 C 4.815 20.035 4.564 17.843 4.564 15.425 C 4.564 13.007 4.815 10.815 5.221 9.228 C 5.626 7.641 6.187 6.659 6.805 6.659 Z " stroke-width="1"/>
+    <path id="ID0.8606671020388603" fill="#FFFF6D" stroke="#FFE061" stroke-width="0.2" d="M 1.15 15.425 C 1.15 23.088 3.478 29.3 6.349 29.3 C 9.221 29.3 11.548 23.088 11.548 15.425 C 11.548 7.762 9.221 1.55 6.349 1.55 C 3.478 1.55 1.15 7.762 1.15 15.425 Z M 2.7 15.425 C 2.7 10.046 4.334 5.688 6.349 5.688 C 8.364 5.688 9.999 10.046 9.999 15.425 C 9.999 20.803 8.364 25.162 6.349 25.162 C 4.334 25.162 2.7 20.803 2.7 15.425 Z "/>
+  </g>
+</svg>

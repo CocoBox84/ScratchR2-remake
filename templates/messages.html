@@ -1,0 +1,584 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Scratch clone</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            background: #ffffff;
+        }
+
+        #scratch-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        #player {
+            width: 482px;
+            height: 425px;
+        }
+
+
+        #scratch {
+
+            visibility: visible;
+
+            display: block;
+
+            border: 0;
+            margin: 0;
+            padding: 0;
+
+
+            color: #322f31;
+            line-height: 1.5385em;
+            text-shadow: 0 1px #fff;
+
+            --wm-toolbar-height: 65px;
+
+            color: #211922;
+            font-family: "helvetica neue", arial, sans-serif;
+            font-size: 13px;
+
+            color: #000;
+            direction: ltr;
+            font: 81.25% 'Lucida Grande', arial, sans-serif;
+            font-family: "Lucida Grande", arial, sans-serif;
+            font-size: 81.25%;
+            line-height: normal;
+        }
+
+        #scratch.fullscreen {
+            display: block !important;
+            position: fixed !important;
+            z-index: 10000000000 !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+        }
+
+        #content {
+            padding: 50px 0 7em 0;
+        }
+
+        #topnav form.search .glass {
+            background: url("{% static 'nav-search-glass.png' %}") no-repeat 9px center !important;
+        }
+
+        .staff-alert {
+  background: #ffe0e0;
+  border: 1px solid #cc0000;
+  padding: 8px;
+  font-weight: bold;
+  color: #900;
+}
+
+.media-item-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.media-item-content.not-shared {
+  opacity: 0.85;
+}
+
+/* Thumbnail */
+.media-thumb {
+  flex: 0 0 100px;
+  margin-right: 12px;
+}
+.media-thumb img {
+  width: 100px;
+  height: 80px;
+  object-fit: cover;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+/* Info section */
+.media-info {
+  flex: 1;
+}
+.media-info-item.title {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.media-info-item.date {
+  display: block;
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+.media-control-edit {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+/* Stats for shared projects */
+.media-stats {
+  flex: 0 0 auto;
+  text-align: right;
+  font-size: 12px;
+  color: #444;
+}
+.media-stats .stat {
+  display: inline-block;
+  margin-left: 8px;
+}
+.media-stats .icon-xs {
+  margin-right: 2px;
+}
+
+/* Actions (delete/share/unshare) */
+.media-action {
+  flex: 0 0 auto;
+  text-align: right;
+}
+.media-action a,
+.media-stats a.unshare {
+  display: inline-block;
+  margin-left: 10px;
+  font-size: 12px;
+  color: #0077cc;
+  text-decoration: none;
+}
+.media-action a:hover,
+.media-stats a.unshare:hover {
+  text-decoration: underline;
+}
+
+.post-link {
+    display: inline;
+}
+
+.button.small>span, button.small>span {
+    line-height: 25px;
+}
+
+.post-link button {
+    display: inline;
+    line-height: 25px;
+}
+
+/**/
+
+/* Container for each project card */
+.media-item-content {
+  display: flex;
+  align-items: flex-start;
+  padding: 8px;
+  border-bottom: 1px solid #ddd;
+  background: #fff;
+}
+
+.media-item-content.not-shared {
+  opacity: 0.85;
+}
+
+/* Info section */
+.media-info {
+  flex: 1;
+}
+.media-info-item.title {
+  display: block;
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+.time {
+  display: block;
+  font-size: 12px;
+  color: #777;
+  margin-bottom: 7px;
+  margin-left: 3px;
+}
+.media-control-edit {
+  display: inline-block;
+  margin-top: 4px;
+}
+
+.box-head {
+    margin-bottom: 8px;
+}
+
+.message-list li.unread {
+  font-weight: bold;
+  background: #f9f9f9;
+}
+    </style>
+    <link href="{% static 'css/main.css' %}" rel="stylesheet">
+    <script src="{% static 'swfobject.js' %}"></script>
+</head>
+
+<body>
+    <div id="pagewrapper">
+        <div id="topnav">
+            <div class="innerwrap">
+                <div class="container">
+                    <a href="/" class="logo"><span class="scratch"></span></a>
+                    <ul class="site-nav">
+                        <li><a id="project-create" href="http://127.0.0.1:8000/projects/editor/?tip_bar=home">Create</a>
+                        </li>
+                        <li><a href="http://127.0.0.1:8000/explore/?date=this_month">Explore</a></li>
+                        <li><a href="http://127.0.0.1:8000/discuss/">Discuss</a></li>
+                        <li><a href="http://127.0.0.1:8000/about/">About</a></li>
+                        <li class="last"><a href="http://127.0.0.1:8000/help/">Help</a></li>
+                    </ul>
+
+                    <form class="search" action="http://127.0.0.1:8000/search/google_results/" method="get">
+                        <input class="glass" value="" type="submit">
+
+                        <input id="search-input" placeholder="Search" name="q" type="text">
+
+
+                        <input name="date" value="anytime" type="hidden">
+                        <input name="sort_by" value="datetime_shared" type="hidden">
+
+                    </form>
+                </div>
+            </div><!-- innerwrap -->
+        </div>
+        <div class="container" id="content">
+        <div class="cols">
+            <!-- Sidebar -->
+            <div class="col-4 left">
+                <div class="box v-tabs">
+                    <div id="sidebar" class="tabs-index">
+                        <ul id="side_tabs">
+                            <ul id="side_tabs">
+  <li class="first {% if active_tab == 'all' %}active{% endif %}">
+    <a href="/messages/">All Messages</a>
+  </li>
+  <li data-tab="comments" class="{% if active_tab == 'comments' %}active{% endif %}">
+    <a href="/messages/comments/">Comments</a>
+  </li>
+  <li data-tab="alerts" class=" last {% if active_tab == 'alerts' %}active{% endif %}">
+    <a href="/messages/alerts/">Alerts</a>
+  </li>
+</ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main content -->
+            <div class="col-12">
+                <div class="box">
+                    <div class="box-head">
+                        <h2>Messages</h2>
+                    </div>
+                    <div class="box-content v-tabs-content" id="main-content">
+                        {% for date, msgs in grouped_messages.items %}
+                          <h3 class="box-head">On {{ date|date:"F j, Y" }}</h3>
+                          <ul class="message-list media-list">
+                            {% for msg in msgs %}
+                              <li class="media-item-content {% if not msg.read %}unread{% endif %}">
+                                <span class="icon-xs {{ msg.type }} grey"></span>
+                                {% if msg.type == "love" %}
+                                  <a href="/users/{{ msg.actor.username }}">{{ msg.actor.username }}</a>
+                                  <span style="margin-left: 3px; margin-right: 3px;">loved your project</span>
+                                  <a href="{% url 'project_page' msg.project.id %}">{{ msg.project.title }}</a>
+                                {% elif msg.type == "favorite" %}
+                                  <a href="/users/{{ msg.actor.username }}">{{ msg.actor.username }}</a>
+                                  <span style="margin-left: 3px; margin-right: 3px;">favorited your project</span>
+                                  <a href="{% url 'project_page' msg.project.id %}">{{ msg.project.title }}</a>
+                                {% elif msg.type == "follow" %}
+                                  <a href="/users/{{ msg.actor.username }}">{{ msg.actor.username }}</a>
+                                  <span style="margin-left: 3px; margin-right: 3px;">is now following you</span>
+                                {% elif msg.type == "comment" %}
+                                  <a href="/users/{{ msg.actor.username }}">{{ msg.actor.username }}</a>
+                                  <span style="margin-left: 3px; margin-right: 3px;">commented: "{{ msg.text }}"</span>
+                                  on <a href="{% url 'project_page' msg.project.id %}">{{ msg.project.title }}</a>
+                                {% elif msg.type == "forum_post" %}
+                                  <a href="/users/{{ msg.actor.username }}">{{ msg.actor.username }}</a>
+                                  <span style="margin-left: 3px; margin-right: 3px;">posted in the forum thread</span>
+                                  <a href="{{ msg.link }}">{{ msg.text }}</a>
+                                {% elif msg.type == "studio_invite" %}
+                                  <a href="/users/{{ msg.actor.username }}">{{ msg.actor.username }}</a>
+                                  <span style="margin-left: 3px; margin-right: 3px;">invited you to curate the studio</span>
+                                  <a href="/studios/{{ msg.project.id }}/">{{ msg.project.title }}</a>
+                                {% elif msg.type == "studio_activity" %}
+                                  <span style="margin-left: 3px; margin-right: 3px;">There was new activity in the studio</span>
+                                  <a href="/studios/{{ msg.project.id }}/">{{ msg.project.title }}</a>
+                                  {% elif msg.type == "staff_alert" %}
+  <div class="staff-alert">
+    ⚠️ (Fake) Scratch Team Alert{% if msg.title %}: {{ msg.title }}{% endif %}
+    <div class="alert-body">{{ msg.text }}</div>
+    {% if msg.link %}<a href="{{ msg.link }}">Learn more</a>{% endif %}
+  </div>
+                                {% endif %}
+                                <span class="time">{{ msg.created_at|time:"g:i a" }}</span>
+                              </li>
+                            {% endfor %}
+                          </ul>
+                        {% empty %}
+                          <p>No messages yet.</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <div id="footer">
+      <div class="container">
+        <style>
+          #footer ul.footer-col li {
+            list-style-type:none;
+            display: inline-block;
+            width: 184px;
+            text-align: left;
+            vertical-align: top;
+          }
+
+          #footer ul.footer-col li h4 {
+            font-weight: bold;
+            font-size: 14px;
+            color: #666;
+          }
+
+        </style>
+        <ul class="clearfix footer-col">
+          <li>
+            <h4>About</h4>
+            <ul>
+              <li><a href="/about/">About Scratch</a></li>
+              <li><a href="/parents/">For Parents</a></li>
+              <li><a href="/educators/">For Educators</a></li>
+              <li><a href="/developers">For Developers</a></li>
+              <li><a href="/info/credits/">Our Team</a></li>
+              <li><a href="https://www.scratchfoundation.org/supporters">Donors</a></li>
+              <li><a href="/jobs/">Jobs</a></li>
+              <li><a href="/donate">Donate</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Community</h4>
+            <ul>
+              <li><a href="/community_guidelines/">Community Guidelines</a></li>
+              <li><a href="/discuss/">Discussion Forums</a></li>
+              <li><a href="http://wiki.scratch.mit.edu/">Scratch Wiki</a></li>
+              <li><a href="/statistics/">Statistics</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Resources</h4>
+            <ul>
+              <li><a href="/starter-projects">Starter Projects</a></li>
+              <li><a href="/ideas">Ideas</a></li>
+              <li><a href="/info/faq/">FAQ</a></li>
+              <li><a href="/download">Download</a></li>
+              <li><a href="/contact-us/">Contact Us</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="/terms_of_use/">Terms of Use</a></li>
+              <li><a href="/privacy_policy/">Privacy Policy</a></li>
+              <li><a href="/cookies/">Cookies</a></li>
+              <li><a href="/DMCA/">DMCA</a></li>
+              <li><a href="https://www.scratchfoundation.org/dsa/">DSA Requirements</a></li>
+              <li><a href="https://accessibility.mit.edu/">MIT Accessibility</a></li>
+            </ul>
+          </li>
+          <li>
+            <h4>Scratch Family</h4>
+            <ul>
+              <li><a href="http://scratched.gse.harvard.edu/">ScratchEd</a></li>
+              <li><a href="http://www.scratchjr.org/">ScratchJr</a></li>
+              <li><a href="http://day.scratch.mit.edu/">Scratch Day</a></li>
+              <li><a href="/conference/">Scratch Conference</a></li>
+              <li><a href="http://www.scratchfoundation.org/">Scratch Foundation</a></li>
+              <li><a href="/store">Scratch Store</a></li>
+            </ul>
+          </li>
+        </ul>
+        <ul class="clearfix" id="footer-menu">
+          <li>
+            <form id="lang-dropdown" method="post" action="/i18n/setlang/">
+              <select id="language-selection" name="language">
+
+                <option value="crack">Scratch On Crack</option>
+              
+                <option value="ab">Аҧсшәа</option>
+              
+                <option value="af">Afrikaans</option>
+              
+                <option value="ar">العربية</option>
+              
+                <option value="ast">Asturianu</option>
+              
+                <option value="am">አማርኛ</option>
+              
+                <option value="an">Aragonés</option>
+              
+                <option value="az">Azeri</option>
+              
+                <option value="id">Bahasa Indonesia</option>
+              
+                <option value="bn">বাংলা</option>
+              
+                <option value="be">Беларуская</option>
+              
+                <option value="bg">Български</option>
+              
+                <option value="ca">Català</option>
+              
+                <option value="cs">Česky</option>
+              
+                <option value="cy">Cymraeg</option>
+              
+                <option value="da">Dansk</option>
+              
+                <option value="de">Deutsch</option>
+              
+                <option value="et">Eesti</option>
+              
+                <option value="el">Ελληνικά</option>
+              
+                <option value="en" selected="">English</option>
+              
+                <option value="es">Español (España)</option>
+              
+                <option value="es-419">Español Latinoamericano</option>
+              
+                <option value="eo">Esperanto</option>
+              
+                <option value="eu">Euskara</option>
+              
+                <option value="fa">فارسی</option>
+              
+                <option value="fil">Filipino</option>
+              
+                <option value="fr">Français</option>
+              
+                <option value="fy">Frysk</option>
+              
+                <option value="ga">Gaeilge</option>
+              
+                <option value="gd">Gàidhlig</option>
+              
+                <option value="gl">Galego</option>
+              
+                <option value="ko">한국어</option>
+              
+                <option value="ha">Hausa</option>
+              
+                <option value="hy">Հայերեն</option>
+              
+                <option value="he">עִבְרִית</option>
+              
+                <option value="hi">हिंदी</option>
+              
+                <option value="hr">Hrvatski</option>
+              
+                <option value="xh">isiXhosa</option>
+              
+                <option value="zu">isiZulu</option>
+              
+                <option value="is">Íslenska</option>
+              
+                <option value="it">Italiano</option>
+              
+                <option value="ka">ქართული ენა</option>
+              
+                <option value="kk">қазақша</option>
+              
+                <option value="qu">Kichwa</option>
+              
+                <option value="sw">Kiswahili</option>
+              
+                <option value="ht">Kreyòl ayisyen</option>
+              
+                <option value="ku">Kurdî</option>
+              
+                <option value="ckb">کوردیی ناوەندی</option>
+              
+                <option value="lv">Latviešu</option>
+              
+                <option value="lt">Lietuvių</option>
+              
+                <option value="hu">Magyar</option>
+              
+                <option value="mi">Māori</option>
+              
+                <option value="mn">Монгол хэл</option>
+              
+                <option value="nl">Nederlands</option>
+              
+                <option value="ja">日本語</option>
+              
+                <option value="ja-Hira">にほんご</option>
+              
+                <option value="nb">Norsk Bokmål</option>
+              
+                <option value="nn">Norsk Nynorsk</option>
+              
+                <option value="oc">Occitan</option>
+              
+                <option value="or">ଓଡ଼ିଆ</option>
+              
+                <option value="uz">Oʻzbekcha</option>
+              
+                <option value="th">ไทย</option>
+              
+                <option value="km">ភាសាខ្មែរ</option>
+              
+                <option value="pl">Polski</option>
+              
+                <option value="pt">Português</option>
+              
+                <option value="pt-br">Português Brasileiro</option>
+              
+                <option value="rap">Rapa Nui</option>
+              
+                <option value="ro">Română</option>
+              
+                <option value="ru">Русский</option>
+              
+                <option value="nso">Sepedi</option>
+              
+                <option value="tn">Setswana</option>
+              
+                <option value="sk">Slovenčina</option>
+              
+                <option value="sl">Slovenščina</option>
+              
+                <option value="sr">Српски</option>
+              
+                <option value="fi">Suomi</option>
+              
+                <option value="sv">Svenska</option>
+              
+                <option value="vi">Tiếng Việt</option>
+              
+                <option value="tr">Türkçe</option>
+              
+                <option value="uk">Українська</option>
+              
+                <option value="zh-cn">简体中文</option>
+              
+                <option value="zh-tw">繁體中文</option>
+              
+              </select>
+            </form>
+          </li>
+        </ul>
+      </div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="414.3483390076956" height="361.05997841199246" viewBox="-0.5299892059962428 -0.5299892059962428 414.3483390076956 361.05997841199246">
+  
+  <path id="ID0.551434701308608" fill="#DDDEDE" stroke="none" d="M 0 0 L 253.5 0 L 253.5 360 L 0 360 L 0 0 Z " stroke-width="1.0599784119924855"/>
+  <text  fill="#663B00" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.477002 0 0 0.477002 276.611495 67.79550499999999)" stroke-width="1" alignment-baseline="text-before-edge"  >So, to summarise here is the full
+scripts for the project to date!
+ 
+This includes:
+  * Gravity
+  * Floor / slope detection
+  * Walking
+  * Jumping
+  * Ceiling detection</text>
+</svg>

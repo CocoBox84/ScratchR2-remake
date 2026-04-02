@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="376.3905944824219" height="171.6815948486328" viewBox="0.8303999900817871 7.351598262786865 376.3905944824219 171.6815948486328">
+  
+  <text  fill="#663B00" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.5152 0 0 0.5152 0.04239999999999999 -3.5291999999999994)" stroke-width="1" alignment-baseline="text-before-edge"  >There are problems though. Clicking multiple times quickly will make the player
+'fly' up and up. To fix this we need to only allow him to start a jump 'when he
+is touching the ground'. However, another problem can arise from that assumption.
+If a player is walking down a slope, then often he will not be touching the ground
+all the time, but kind of skipping down the slope. This often results in the player
+missing a jump at a critical point in the game. An improvement therefore is to
+say that a player can jump 'if he touched the floor very very recently, (even if
+he is not on the floor right now).</text>
+</svg>

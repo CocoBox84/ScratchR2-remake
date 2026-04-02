@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="481" height="361" viewBox="-0.5 -0.5 481 361">
+  
+  <path id="ID0.9437967324629426" fill="#E9FFF1" stroke="none" d="M 0 327 L 480 327 L 480 360 L 0 360 L 0 327 Z" stroke-width="1"/>
+  <text  fill="#CC0000" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.697974 0 0 0.697974 257.651065 320.316935)" stroke-width="1" alignment-baseline="text-before-edge"  >Press Space to continue --&gt;</text>
+  <path id="ID0.8876718329265714" fill="#E9FFF1" stroke="none" d="M 0 0 L 480 0 L 480 32 L 0 32 L 0 0 Z " stroke-width="0.9710337675355964"/>
+  <text  fill="#CC0000" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.697974 0 0 0.697974 8.450965 319.816935)" stroke-width="1" alignment-baseline="text-before-edge"  >&lt;-- Left Arrow</text>
+</svg>
