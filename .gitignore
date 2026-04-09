@@ -1,1 +1,4 @@
 *.sqlite3
+media/assets/
+media/thumbnails/
+staticfiles/

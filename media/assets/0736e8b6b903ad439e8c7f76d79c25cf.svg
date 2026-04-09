@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="362.59375" height="89.93437194824219" viewBox="0.9356200695037842 5.712696075439453 362.59375 89.93437194824219">
-  
-  <text  fill="#663B00" text-anchor="start" font-family="Gloria" font-size="22" transform="matrix(0.442809 0 0 0.442809 0.3285974999999999 -3.1638775)" stroke-width="1" alignment-baseline="text-before-edge"  >So, here is a version of wall jumping which I think could work ok in a game. When a player
-jumps at a wall with enough speed and is still holding the jump key, they automatically jump
-off it in the opersite direction. What is different though to a normal jump, is that the
-player no longer has control of his character in the air for half a second. This prevents
-then from bouncing up a single wall.</text>
-</svg>
