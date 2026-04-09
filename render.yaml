@@ -2,7 +2,7 @@ services:
   - type: web
     name: scratchr2-remake
     runtime: python
-    repo: https://github.com/CocoBox84/ScratchR2-remake/
+    repo: https://github.com/CocoBox84/ScratchR2-remake
     buildCommand: |
       pip install -r requirements.txt
       python manage.py collectstatic --noinput
