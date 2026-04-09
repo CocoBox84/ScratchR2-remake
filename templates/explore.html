@@ -73,21 +73,20 @@
     }
 
     .box .box-head {
-  padding: 7px 20px !important;
-  position: relative !important;
-  overflow: hidden !important;
-  border-top: 1px solid #fff !important;
-  box-radius: 10px !important;
-  border-radius: 10px !important;
-  -moz-border-radius: 10px !important;
-  -webkit-border-radius: 10px !important;
-}
+      padding: 7px 20px !important;
+      position: relative !important;
+      overflow: hidden !important;
+      border-top: 1px solid #fff !important;
+      border-radius: 10px !important;
+      -moz-border-radius: 10px !important;
+      -webkit-border-radius: 10px !important;
+    }
   </style>
 
-  <link href="{% static 'css/main_explore.css' %}" rel="stylesheet"> 
+  <link href="{% static 'css/main_explore.css' %}" rel="stylesheet">
   <link href="{% static 'css/main.css' %}" rel="stylesheet">
   <link href="{% static 'css/explore.css' %}" rel="stylesheet">
-  
+
   <!--<link href="{% static 'css/project_base.css' %}" rel="stylesheet">-->
   <script src="{% static 'swfobject.js' %}"></script>
 </head>
@@ -171,7 +170,8 @@
               <div class="dropdown select button grey small sort-by">
                 <span class="dropdown-toggle black" data-toggle="dropdown">
                   <span class="selected">
-                    {% if sort == "views" %}Most viewed{% elif sort == "loves" %}Most loved{% elif sort == "remixes"%}Most remixed{% elif sort == "newest" %}Newest{% else %}Shared{% endif %}
+                    {% if sort == "views" %}Most viewed{% elif sort == "loves" %}Most loved{% elif sort ==
+                    "remixes"%}Most remixed{% elif sort == "newest" %}Newest{% else %}Shared{% endif %}
                   </span>
                   <span class="caret"></span>
                 </span>
@@ -189,7 +189,8 @@
               <div class="dropdown radio-style button grey small date-range">
                 <span class="dropdown-toggle black" data-toggle="dropdown">
                   <span class="selected">
-                    {% if date == "today" %}Today{% elif date == "this_week" %}This week{% elif date == "this_month" %}This month{% else %}Anytime{% endif %}
+                    {% if date == "today" %}Today{% elif date == "this_week" %}This week{% elif date == "this_month"
+                    %}This month{% else %}Anytime{% endif %}
                   </span>
                   <span class="caret"></span>
                 </span>
