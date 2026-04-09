@@ -500,8 +500,8 @@
 
     <script src="{% static 'js/scratch.js' %}"></script>
 
+     {% if user.isAuthenticated %}
     <script>
-        {% if user.isAuthenticated %}
         try {
             document.querySelector('.messages-icon').addEventListener('click', () => {
                 const span = document.querySelector('.notificationsCount');
@@ -527,8 +527,8 @@
         try {
             setInterval(updateUnreadCount, 60000);
         } catch { }
-        {% endif %}
     </script>
+    {% endif %}
 </body>
 
 </html>

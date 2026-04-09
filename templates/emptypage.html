@@ -71,9 +71,120 @@
         #topnav form.search .glass {
             background: url("{% static 'nav-search-glass.png' %}") no-repeat 9px center !important;
         }
+
+#topnav .account-nav {
+  display: block;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: relative !important;
+  
+}
+
+#topnav ul.account-nav {
+    list-style-type: none;
+    align-self: flex-end;
+    white-space: nowrap;
+    float: right;
+    position: relative;
+}
+
+.account-nav .dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 1000;
+  display: none; /* show on hover or toggle */
+}
+.account-nav .dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+#topnav li.logout.divider input {
+    width: 100%;
+    border: 0;
+    /* background-color: #855cd6; */
+    background-color: #0f8bc0;
+    box-shadow: none;
+    margin: 0;
+    color: white;
+    text-align: left;
+}
+
+#topnav li.logout.divider input:hover {
+    background-color: #0c6185
+}
+
+#topnav .container::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/**/
+#topnav form.search {
+    margin: 6px 10px 0 10px !important;
+}
+
+#search-input {
+        direction: ltr;
+    --pericles-word-background: rgba(9, 46, 140, 0.92);
+    --pericles-section-background: rgba(255, 254, 219, 1.54);
+    white-space: nowrap;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: normal;
+    padding: 4px;
+    margin-bottom: 9px;
+    font-size: 13px;
+    line-height: 18px;
+    color: #555;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    transition: border linear .2s, box-shadow linear .2s;
+    outline: 0;
+    border: 0;
+    border-radius: 10px !important;
+    height: 1em !important;
+    display: inline-block !important;
+    padding-left: 33px !important;
+    width: calc(100% - 35px) !important;
+}
+
+#topnav .container {
+  display: flex;
+  align-items: center;
+}
+#topnav .site-nav { margin-right: 20px; margin-top: -5px !important; }
+#topnav form.search { flex: 1; margin: 0 20px; }
+#topnav .account-nav { margin-left: auto; top: -7px !important; }
+#search-input { width: 100%; }
+
+.my-stuff {
+    border: none !important;
+}
+
+@keyframes messagesCount {
+    0% {
+        top: -30px !important;
+    }
+
+    100% {
+        top: 4px !important;
+    }
+}
+
+.notificationsCount.some {
+    animation: messagesCount 1s ease-in !important;
+    top: 4px !important;
+}
+
     </style>
-    <link href="{% static 'css/main.css' %}" rel="stylesheet">
-    <link href="{% static 'css/project_base.css' %}" rel="stylesheet">
+    <!-- Import the newer css file first, so that the old one can override it -->
+<!----<link href="{% static 'css/new_main.css' %}" rel="stylesheet">-->
+<!----<link rel="stylesheet" href="{% static 'css/new_main.css' %}">
+<a!----<link rel="stylesheet" href="{% static 'css/new_main2.css' %}"><a!---->
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/project_base.css' %}">
     <script src="{% static 'swfobject.js' %}"></script>
 </head>
 
@@ -82,32 +193,342 @@
         <div id="topnav">
             <div class="innerwrap">
                 <div class="container">
-                    <a href="http://127.0.0.1:8000/" class="logo"><span class="scratch"></span></a>
-                    <ul class="site-nav">
-                        <li><a id="project-create" href="http://127.0.0.1:8000/projects/editor/?tip_bar=home">Create</a>
+                        <a href="/" class="logo"><span class="scratch"></span></a>
+                        <ul class="site-nav logged-in">
+                            <li class="logged-in"><a id="project-create" href="/projects/editor/?tip_bar=home" class="logged-in">Create</a></li><li class="logged-in"><a href="/explore/?date=this_month" class="logged-in">Explore</a></li><!--<li class="logged-in"><a href="/discuss/" class="logged-in">Discuss</a></li>--><li class="logged-in"><a href="/about/" class="logged-in">About</a></li><li class="last logged-in"><a href="/help/"><!----Help<!----><!---->Ideas<!----></a></li>
+                        </ul>
+                        <form class="search logged-in" action="/search/google_results/" method="get">
+                            <input class="glass logged-in" value="" type="submit">
+
+                            <input id="search-input" class="logged-in" placeholder="Search" name="q" type="text">
+
+
+                            <input name="date" class="logged-in" value="anytime" type="hidden">
+                            <input name="sort_by" class="logged-in" value="datetime_shared" type="hidden">
+
+                        </form>
+                    {% if user.is_authenticated %}
+                    <ul class="account-nav logged-in last">
+                        <li class="messages"><a title="messages - updates and notices" href="/messages/" class="messages-icon"><span class="notificationsCount none {% if user.unread_messages_count > 0 %}some{% endif %}">{{ user.unread_messages_count }}</span></a></li><li class="my-stuff"><a title="my stuff - manage projects and studios" href="/mystuff/" class="mystuff-icon"></a></li><li class="logged-in-user dropdown"><span class="user-name dropdown-toggle" data-toggle="dropdown">
+                                <img class="user-icon" src="{{ user.profile.avatar.url|default:'/static/default.png' }}"
+                                    width="24" height="24">
+                                <span class="a">{{ user.username }}</span>
+                                <span class="caret"></span></span>
+                            <div class="dropdown-menu blue">
+                                <ul class="user-nav">
+                                    <li><a href="/users/{{ user.username }}/">Profile</a></li><li><a href="/mystuff/">My Stuff</a></li><li><a href="/accounts/settings/">Account settings</a></li><li id="logout" class="logout divider"><a href="JavaScript:Scratch.auth.logout();">Sign out</a></li>
+                                </ul>
+                            </div>
                         </li>
-                        <li><a href="http://127.0.0.1:8000/explore/?date=this_month">Explore</a></li>
-                        <li><a href="http://127.0.0.1:8000/discuss/">Discuss</a></li>
-                        <li><a href="http://127.0.0.1:8000/about/">About</a></li>
-                        <li class="last"><a href="http://127.0.0.1:8000/help/">Help</a></li>
                     </ul>
-
-                    <form class="search" action="http://127.0.0.1:8000/search/google_results/" method="get">
-                        <input class="glass" value="" type="submit">
-
-                        <input id="search-input" placeholder="Search" name="q" type="text">
-
-
-                        <input name="date" value="anytime" type="hidden">
-                        <input name="sort_by" value="datetime_shared" type="hidden">
-
-                    </form>
+                    {% else %}
+                    <ul class="account-nav">
+                        <li class="join-scratch" data-control="registration"><span class=""><span>Join Scratch</span></span></li><li id="login-dropdown last" class="sign-in dropdown"><span data-toggle="dropdown" class="dropdown-toggle"><span>Sign in</span></span>
+                            <div class="popover bottom dropdown-menu">
+                                <div class="arrow"></div>
+                                <div class="popover-content">
+                                    <form method="post" id="login" action="#"><label
+                                            for="username">Username</label><input type="text"
+                                            id="login_dropdown_username" name="username" maxlength="30"
+                                            class="wide username"><label for="password"
+                                            class="password">Password</label><input type="password" name="password"
+                                            class="wide password">
+                                        <div class="ajax-loader" style="display:none; float: left;"></div><button
+                                            type="submit">Sign in</button><span class="forgot-password"><a
+                                                href="/web/20140430133144/http://scratch.mit.edu/accounts/password_reset/">Forgot
+                                                password?</a></span>
+                                        <div class="error"></div>
+                                    </form>
+                                </div>
+                            </div>
+                        </li><li data-control="modal-login" class="sign-in mobile"><span>Sign in</span></li>
+                    </ul>
+                    {% endif %}
                 </div>
             </div><!-- innerwrap -->
         </div>
         <div class="container" id="content">
         </div>
     </div>
+
+    <div id="footer">
+        <div class="container">
+            <style>
+                #footer ul.footer-col li {
+                    list-style-type: none;
+                    display: inline-block;
+                    width: 184px;
+                    text-align: left;
+                    vertical-align: top;
+                }
+
+                #footer ul.footer-col li h4 {
+                    font-weight: bold;
+                    font-size: 14px;
+                    color: #666;
+                }
+            </style>
+            <ul class="clearfix footer-col">
+                <li>
+                    <h4>About</h4>
+                    <ul>
+                        <li><a href="/about/">About Scratch</a></li>
+                        <li><a href="/parents/">For Parents</a></li>
+                        <li><a href="/educators/">For Educators</a></li>
+                        <li><a href="/developers">For Developers</a></li>
+                        <li><a href="/info/credits/">Our Team</a></li>
+                        <li><a href="https://www.scratchfoundation.org/supporters">Donors</a></li>
+                        <li><a href="/jobs/">Jobs</a></li>
+                        <li><a href="/donate">Donate</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="/community_guidelines/">Community Guidelines</a></li>
+                        <li><a href="/discuss/">Discussion Forums</a></li>
+                        <li><a href="http://wiki.scratch.mit.edu/">Scratch Wiki</a></li>
+                        <li><a href="/statistics/">Statistics</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="/starter-projects">Starter Projects</a></li>
+                        <li><a href="/ideas">Ideas</a></li>
+                        <li><a href="/info/faq/">FAQ</a></li>
+                        <li><a href="/download">Download</a></li>
+                        <li><a href="/contact-us/">Contact Us</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/terms_of_use/">Terms of Use</a></li>
+                        <li><a href="/privacy_policy/">Privacy Policy</a></li>
+                        <li><a href="/cookies/">Cookies</a></li>
+                        <li><a href="/DMCA/">DMCA</a></li>
+                        <li><a href="https://www.scratchfoundation.org/dsa/">DSA Requirements</a></li>
+                        <li><a href="https://accessibility.mit.edu/">MIT Accessibility</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <h4>Scratch Family</h4>
+                    <ul>
+                        <li><a href="http://scratched.gse.harvard.edu/">ScratchEd</a></li>
+                        <li><a href="http://www.scratchjr.org/">ScratchJr</a></li>
+                        <li><a href="http://day.scratch.mit.edu/">Scratch Day</a></li>
+                        <li><a href="/conference/">Scratch Conference</a></li>
+                        <li><a href="http://www.scratchfoundation.org/">Scratch Foundation</a></li>
+                        <li><a href="/store">Scratch Store</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="clearfix" id="footer-menu">
+                <li>
+                    <form id="lang-dropdown" method="post" action="/i18n/setlang/">
+                        <select id="language-selection" name="language">
+
+                            <option value="crack">Scratch On Crack</option>
+
+                            <option value="ab">Аҧсшәа</option>
+
+                            <option value="af">Afrikaans</option>
+
+                            <option value="ar">العربية</option>
+
+                            <option value="ast">Asturianu</option>
+
+                            <option value="am">አማርኛ</option>
+
+                            <option value="an">Aragonés</option>
+
+                            <option value="az">Azeri</option>
+
+                            <option value="id">Bahasa Indonesia</option>
+
+                            <option value="bn">বাংলা</option>
+
+                            <option value="be">Беларуская</option>
+
+                            <option value="bg">Български</option>
+
+                            <option value="ca">Català</option>
+
+                            <option value="cs">Česky</option>
+
+                            <option value="cy">Cymraeg</option>
+
+                            <option value="da">Dansk</option>
+
+                            <option value="de">Deutsch</option>
+
+                            <option value="et">Eesti</option>
+
+                            <option value="el">Ελληνικά</option>
+
+                            <option value="en" selected="">English</option>
+
+                            <option value="es">Español (España)</option>
+
+                            <option value="es-419">Español Latinoamericano</option>
+
+                            <option value="eo">Esperanto</option>
+
+                            <option value="eu">Euskara</option>
+
+                            <option value="fa">فارسی</option>
+
+                            <option value="fil">Filipino</option>
+
+                            <option value="fr">Français</option>
+
+                            <option value="fy">Frysk</option>
+
+                            <option value="ga">Gaeilge</option>
+
+                            <option value="gd">Gàidhlig</option>
+
+                            <option value="gl">Galego</option>
+
+                            <option value="ko">한국어</option>
+
+                            <option value="ha">Hausa</option>
+
+                            <option value="hy">Հայերեն</option>
+
+                            <option value="he">עִבְרִית</option>
+
+                            <option value="hi">हिंदी</option>
+
+                            <option value="hr">Hrvatski</option>
+
+                            <option value="xh">isiXhosa</option>
+
+                            <option value="zu">isiZulu</option>
+
+                            <option value="is">Íslenska</option>
+
+                            <option value="it">Italiano</option>
+
+                            <option value="ka">ქართული ენა</option>
+
+                            <option value="kk">қазақша</option>
+
+                            <option value="qu">Kichwa</option>
+
+                            <option value="sw">Kiswahili</option>
+
+                            <option value="ht">Kreyòl ayisyen</option>
+
+                            <option value="ku">Kurdî</option>
+
+                            <option value="ckb">کوردیی ناوەندی</option>
+
+                            <option value="lv">Latviešu</option>
+
+                            <option value="lt">Lietuvių</option>
+
+                            <option value="hu">Magyar</option>
+
+                            <option value="mi">Māori</option>
+
+                            <option value="mn">Монгол хэл</option>
+
+                            <option value="nl">Nederlands</option>
+
+                            <option value="ja">日本語</option>
+
+                            <option value="ja-Hira">にほんご</option>
+
+                            <option value="nb">Norsk Bokmål</option>
+
+                            <option value="nn">Norsk Nynorsk</option>
+
+                            <option value="oc">Occitan</option>
+
+                            <option value="or">ଓଡ଼ିଆ</option>
+
+                            <option value="uz">Oʻzbekcha</option>
+
+                            <option value="th">ไทย</option>
+
+                            <option value="km">ភាសាខ្មែរ</option>
+
+                            <option value="pl">Polski</option>
+
+                            <option value="pt">Português</option>
+
+                            <option value="pt-br">Português Brasileiro</option>
+
+                            <option value="rap">Rapa Nui</option>
+
+                            <option value="ro">Română</option>
+
+                            <option value="ru">Русский</option>
+
+                            <option value="nso">Sepedi</option>
+
+                            <option value="tn">Setswana</option>
+
+                            <option value="sk">Slovenčina</option>
+
+                            <option value="sl">Slovenščina</option>
+
+                            <option value="sr">Српски</option>
+
+                            <option value="fi">Suomi</option>
+
+                            <option value="sv">Svenska</option>
+
+                            <option value="vi">Tiếng Việt</option>
+
+                            <option value="tr">Türkçe</option>
+
+                            <option value="uk">Українська</option>
+
+                            <option value="zh-cn">简体中文</option>
+
+                            <option value="zh-tw">繁體中文</option>
+
+                        </select>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="{% static 'js/scratch.js' %}"></script>
+
+     {% if user.isAuthenticated %}
+    <script>
+        try {
+            document.querySelector('.messages-icon').addEventListener('click', () => {
+                const span = document.querySelector('.notificationsCount');
+                span.textContent = '0';
+                span.classList.add('none');
+            });
+        } catch { }
+        function updateUnreadCount() {
+            fetch("/fragment/unread-count.json")
+                .then(r => r.json())
+                .then(data => {
+                    const span = document.querySelector(".notificationsCount");
+                    span.textContent = data.unread;
+                    if (data.unread > 0) {
+                        span.classList.remove("none");
+                    } else {
+                        span.classList.add("none");
+                    }
+                });
+        }
+
+        // update every 60s
+        try {
+            setInterval(updateUnreadCount, 60000);
+        } catch { }
+    </script>
+    {% endif %}
 </body>
 
 </html>
