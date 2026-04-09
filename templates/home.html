@@ -72,119 +72,136 @@
             background: url("{% static 'nav-search-glass.png' %}") no-repeat 9px center !important;
         }
 
-#topnav .account-nav {
-  display: block;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  position: relative !important;
-  
-}
+        #topnav .account-nav {
+            display: block;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            position: relative !important;
 
-#topnav ul.account-nav {
-    list-style-type: none;
-    align-self: flex-end;
-    white-space: nowrap;
-    float: right;
-    position: relative;
-}
+        }
 
-.account-nav .dropdown-menu {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  z-index: 1000;
-  display: none; /* show on hover or toggle */
-}
-.account-nav .dropdown:hover .dropdown-menu {
-  display: block;
-}
+        #topnav ul.account-nav {
+            list-style-type: none;
+            align-self: flex-end;
+            white-space: nowrap;
+            float: right;
+            position: relative;
+        }
 
-#topnav li.logout.divider input {
-    width: 100%;
-    border: 0;
-    /* background-color: #855cd6; */
-    background-color: #0f8bc0;
-    box-shadow: none;
-    margin: 0;
-    color: white;
-    text-align: left;
-}
+        .account-nav .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            z-index: 1000;
+            display: none;
+            /* show on hover or toggle */
+        }
 
-#topnav li.logout.divider input:hover {
-    background-color: #0c6185
-}
+        .account-nav .dropdown:hover .dropdown-menu {
+            display: block;
+        }
 
-#topnav .container::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+        #topnav li.logout.divider input {
+            width: 100%;
+            border: 0;
+            /* background-color: #855cd6; */
+            background-color: #0f8bc0;
+            box-shadow: none;
+            margin: 0;
+            color: white;
+            text-align: left;
+        }
 
-/**/
-#topnav form.search {
-    margin: 6px 10px 0 10px !important;
-}
+        #topnav li.logout.divider input:hover {
+            background-color: #0c6185
+        }
 
-#search-input {
-        direction: ltr;
-    --pericles-word-background: rgba(9, 46, 140, 0.92);
-    --pericles-section-background: rgba(255, 254, 219, 1.54);
-    white-space: nowrap;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-weight: normal;
-    padding: 4px;
-    margin-bottom: 9px;
-    font-size: 13px;
-    line-height: 18px;
-    color: #555;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
-    transition: border linear .2s, box-shadow linear .2s;
-    outline: 0;
-    border: 0;
-    border-radius: 10px !important;
-    height: 1em !important;
-    display: inline-block !important;
-    padding-left: 33px !important;
-    width: calc(100% - 35px) !important;
-}
+        #topnav .container::after {
+            content: "";
+            display: table;
+            clear: both;
+        }
 
-#topnav .container {
-  display: flex;
-  align-items: center;
-}
-#topnav .site-nav { margin-right: 20px; margin-top: -5px !important; }
-#topnav form.search { flex: 1; margin: 0 20px; }
-#topnav .account-nav { margin-left: auto; top: -7px !important; }
-#search-input { width: 100%; }
+        /**/
+        #topnav form.search {
+            margin: 6px 10px 0 10px !important;
+        }
 
-.my-stuff {
-    border: none !important;
-}
+        #search-input {
+            direction: ltr;
+            --pericles-word-background: rgba(9, 46, 140, 0.92);
+            --pericles-section-background: rgba(255, 254, 219, 1.54);
+            white-space: nowrap;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-weight: normal;
+            padding: 4px;
+            margin-bottom: 9px;
+            font-size: 13px;
+            line-height: 18px;
+            color: #555;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+            transition: border linear .2s, box-shadow linear .2s;
+            outline: 0;
+            border: 0;
+            border-radius: 10px !important;
+            height: 1em !important;
+            display: inline-block !important;
+            padding-left: 33px !important;
+            width: calc(100% - 35px) !important;
+        }
 
-@keyframes messagesCount {
-    0% {
-        top: -30px !important;
-    }
+        #topnav .container {
+            display: flex;
+            align-items: center;
+        }
 
-    100% {
-        top: 4px !important;
-    }
-}
+        #topnav .site-nav {
+            margin-right: 20px;
+            margin-top: -5px !important;
+        }
 
-.notificationsCount.some {
-    animation: messagesCount 1s ease-in !important;
-    top: 4px !important;
-}
+        #topnav form.search {
+            flex: 1;
+            margin: 0 20px;
+        }
 
+        #topnav .account-nav {
+            margin-left: auto;
+            top: -7px !important;
+        }
+
+        #search-input {
+            width: 100%;
+        }
+
+        .my-stuff {
+            border: none !important;
+        }
+
+        @keyframes messagesCount {
+            0% {
+                top: -30px !important;
+            }
+
+            100% {
+                top: 4px !important;
+            }
+        }
+
+        .notificationsCount.some {
+            animation: messagesCount 1s ease-in !important;
+            top: 4px !important;
+        }
     </style>
     <!-- Import the newer css file first, so that the old one can override it -->
-<!----<link href="{% static 'css/new_main.css' %}" rel="stylesheet">-->
-<!----<link rel="stylesheet" href="{% static 'css/new_main.css' %}">
+    <!----<link href="{% static 'css/new_main.css' %}" rel="stylesheet">-->
+    <!----<link rel="stylesheet" href="{% static 'css/new_main.css' %}">
 <a!----<link rel="stylesheet" href="{% static 'css/new_main2.css' %}"><a!---->
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
     <link rel="stylesheet" href="{% static 'css/project_base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/help.css' %}">
     <script src="{% static 'swfobject.js' %}"></script>
 </head>
 
@@ -193,37 +210,56 @@
         <div id="topnav">
             <div class="innerwrap">
                 <div class="container">
-                        <a href="/" class="logo"><span class="scratch"></span></a>
-                        <ul class="site-nav logged-in">
-                            <li class="logged-in"><a id="project-create" href="/projects/editor/?tip_bar=home" class="logged-in">Create</a></li><li class="logged-in"><a href="/explore/?date=this_month" class="logged-in">Explore</a></li><!--<li class="logged-in"><a href="/discuss/" class="logged-in">Discuss</a></li>--><li class="logged-in"><a href="/about/" class="logged-in">About</a></li><li class="last logged-in"><a href="/help/"><!----Help<!----><!---->Ideas<!----></a></li>
-                        </ul>
-                        <form class="search logged-in" action="/search/google_results/" method="get">
-                            <input class="glass logged-in" value="" type="submit">
+                    <a href="/" class="logo"><span class="scratch"></span></a>
+                    <ul class="site-nav logged-in">
+                        <li class="logged-in"><a id="project-create" href="/projects/editor/?tip_bar=home"
+                                class="logged-in">Create</a></li>
+                        <li class="logged-in"><a href="/explore/?date=this_month" class="logged-in">Explore</a></li>
+                        <!--<li class="logged-in"><a href="/discuss/" class="logged-in">Discuss</a></li>-->
+                        <li class="logged-in"><a href="/about/" class="logged-in">About</a></li>
+                        <li class="last logged-in"><a href="/help/"><!----Help<!----><!---->Ideas<!----></a></li>
+                    </ul>
+                    <form class="search logged-in" action="/search/google_results/" method="get">
+                        <input class="glass logged-in" value="" type="submit">
 
-                            <input id="search-input" class="logged-in" placeholder="Search" name="q" type="text">
+                        <input id="search-input" class="logged-in" placeholder="Search" name="q" type="text">
 
 
-                            <input name="date" class="logged-in" value="anytime" type="hidden">
-                            <input name="sort_by" class="logged-in" value="datetime_shared" type="hidden">
+                        <input name="date" class="logged-in" value="anytime" type="hidden">
+                        <input name="sort_by" class="logged-in" value="datetime_shared" type="hidden">
 
-                        </form>
+                    </form>
                     {% if user.is_authenticated %}
                     <ul class="account-nav logged-in last">
-                        <li class="messages"><a title="messages - updates and notices" href="/messages/" class="messages-icon"><span class="notificationsCount none {% if user.unread_messages_count > 0 %}some{% endif %}">{{ user.unread_messages_count }}</span></a></li><li class="my-stuff"><a title="my stuff - manage projects and studios" href="/mystuff/" class="mystuff-icon"></a></li><li class="logged-in-user dropdown"><span class="user-name dropdown-toggle" data-toggle="dropdown">
+                        <li class="messages"><a title="messages - updates and notices" href="/messages/"
+                                class="messages-icon"><span
+                                    class="notificationsCount none {% if user.unread_messages_count > 0 %}some{% endif %}">{{
+                                    user.unread_messages_count }}</span></a></li>
+                        <li class="my-stuff"><a title="my stuff - manage projects and studios" href="/mystuff/"
+                                class="mystuff-icon"></a></li>
+                        <li class="logged-in-user dropdown"><span class="user-name dropdown-toggle"
+                                data-toggle="dropdown">
                                 <img class="user-icon" src="{{ user.profile.avatar.url|default:'/static/default.png' }}"
                                     width="24" height="24">
                                 <span class="a">{{ user.username }}</span>
                                 <span class="caret"></span></span>
                             <div class="dropdown-menu blue">
                                 <ul class="user-nav">
-                                    <li><a href="/users/{{ user.username }}/">Profile</a></li><li><a href="/mystuff/">My Stuff</a></li><li><a href="/accounts/settings/">Account settings</a></li><li id="logout" class="logout divider"><a href="JavaScript:Scratch.auth.logout();">Sign out</a></li>
+                                    <li><a href="/users/{{ user.username }}/">Profile</a></li>
+                                    <li><a href="/mystuff/">My Stuff</a></li>
+                                    <li><a href="/accounts/settings/">Account settings</a></li>
+                                    <li id="logout" class="logout divider"><a
+                                            href="JavaScript:Scratch.auth.logout();">Sign out</a></li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
                     {% else %}
                     <ul class="account-nav">
-                        <li class="join-scratch" data-control="registration"><span class=""><span>Join Scratch</span></span></li><li id="login-dropdown last" class="sign-in dropdown"><span data-toggle="dropdown" class="dropdown-toggle"><span>Sign in</span></span>
+                        <li class="join-scratch" data-control="registration"><span class=""><span>Join
+                                    Scratch</span></span></li>
+                        <li id="login-dropdown last" class="sign-in dropdown"><span data-toggle="dropdown"
+                                class="dropdown-toggle"><span>Sign in</span></span>
                             <div class="popover bottom dropdown-menu">
                                 <div class="arrow"></div>
                                 <div class="popover-content">
@@ -241,16 +277,2821 @@
                                     </form>
                                 </div>
                             </div>
-                        </li><li data-control="modal-login" class="sign-in mobile"><span>Sign in</span></li>
+                        </li>
+                        <li data-control="modal-login" class="sign-in mobile"><span>Sign in</span></li>
                     </ul>
                     {% endif %}
                 </div>
             </div><!-- innerwrap -->
         </div>
         <div class="container" id="content">
-            <h1>Welcome to the Scratch clone!</h1>
-            <p>This is a remake of the 2013 Scratch website, built with Django. It is not affiliated with the official Scratch website in any way.</p>
-            <p>Use the navigation bar to explore projects, view user profiles, and more!</p>
+
+            <div id="alert-view"></div>
+
+            <div class="box">
+                <div class="box-head">
+                    <h3>Welcome to the Scratch clone!</h3>
+                </div>
+                <div class="box-content clearfix">
+                    <p>This is a remake of the 2013 Scratch website, built with Django. It is not affiliated with the
+                        official Scratch website in any way.</p>
+                    <p>Use the navigation bar to explore projects, view user profiles, and more!</p>
+                    <p>The server will spin down after a period of inactivity. All data will be lost when the server
+                        spins
+                        down.</p>
+                    <hr>
+                    <p>
+                        If you are using a modern browser,
+                    <h3>you may need to install the Ruffle Flash Emulator.</h3>
+                    <h3>The Website includes the emulator, but you may need to install it as a browser extension.</h3>
+                    <br>
+                    <p>You can also download an older browser that supports Flash (Recommended for best compatibility),
+                        and
+                        use a version of Flash without the lockout.</p>
+                    </p>
+                </div>
+            </div>
+
+            <!-- templates/homepage/index.html block main-content -->
+
+
+
+            <div class="homepage-banner clearfix">
+                <div class="cols clearfix">
+                    <div class="intro col-10">
+                        <h1 class="title">Create stories, games, and animations<br>Share with others around the world
+                        </h1>
+                        <a id="orange-char" class="char"
+                            href="/web/20140212154548/http://scratch.mit.edu/projects/editor/?tip_bar=getStarted">
+                            <img class="img-a"
+                                src="//web.archive.org/web/20140212154548im_/http://cdn.scratch.mit.edu/scratchr2/static/__1392062167__//images/cat-a.png">
+                            <img class="img-b"
+                                src="//web.archive.org/web/20140212154548im_/http://cdn.scratch.mit.edu/scratchr2/static/__1392062167__//images/cat-b.png">
+                            <div class="circle"></div>
+                            <div class="text">TRY IT OUT</div>
+                        </a>
+                        <a id="blue-char" class="char"
+                            href="/web/20140212154548/http://scratch.mit.edu/starter_projects">
+                            <img class="img-a"
+                                src="//web.archive.org/web/20140212154548im_/http://cdn.scratch.mit.edu/scratchr2/static/__1392062167__//images/tera-a.png">
+                            <img class="img-b"
+                                src="//web.archive.org/web/20140212154548im_/http://cdn.scratch.mit.edu/scratchr2/static/__1392062167__//images/tera-b.png">
+                            <div class="circle"></div>
+                            <div class="text">SEE EXAMPLES</div>
+                        </a>
+                        <a id="yellow-char" data-control="registration" class="char" href="#">
+                            <img class="img-a"
+                                src="//web.archive.org/web/20140212154548im_/http://cdn.scratch.mit.edu/scratchr2/static/__1392062167__//images/gobo-a.png">
+                            <img class="img-b"
+                                src="//web.archive.org/web/20140212154548im_/http://cdn.scratch.mit.edu/scratchr2/static/__1392062167__//images/gobo-b.png">
+                            <div class="circle"></div>
+                            <div class="text">JOIN SCRATCH</div>
+                            <div class="text subtext">( it's free )</div>
+                        </a>
+                        <div class="subtext">A creative learning community with <span class="projcount">4,743,605</span>
+                            projects shared</div>
+                        <div class="links">
+                            <a href="/web/20140212154548/http://scratch.mit.edu/about">ABOUT SCRATCH</a>
+                            <a href="/web/20140212154548/http://scratch.mit.edu/educators">FOR EDUCATORS</a>
+                            <a class="last" href="/web/20140212154548/http://scratch.mit.edu/parents">FOR PARENTS</a>
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="video">
+                            <div class="play-button"></div>
+                            <img
+                                src="//web.archive.org/web/20140212154548im_/http://cdn.scratch.mit.edu/scratchr2/static/__1392062167__//images/hp-video-screenshot.png">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <a name="community_featured_projects" style="display: block; height: 60px; margin-top:-60px"></a>
+            <div class="box slider-carousel-container prevent-select">
+                <div class="box-head">
+                    <h4>Featured Projects</h4>
+                </div>
+                <div class="box-content slider-carousel horizontal sliderCarousel" id="featured"
+                    style="height: 158.5px;">
+                    <div class="viewport" style="overflow: hidden; height: 148.5px;">
+                        <ul class="scroll-content" style="width: 3489px; overflow: hidden; left: 0px;">
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/11771382/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/11771382_144x108.png?v=1392171496.99"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/11771382/">Settlers of
+                                        Inland (Collab)</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/turkey3/">turkey3</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16593799/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16593799_144x108.png?v=1390089628.51"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16593799/">Cool
+                                        Animation</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/The_Duke/">The_Duke</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16349277/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16349277_144x108.png?v=1392168339.32"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16349277/">Magicmirror
+                                        2 &gt; 1.5 Updated</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/bridget8/">bridget8</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/13407588/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/13407588_144x108.png?v=1382522949.71"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/projects/13407588/">RoseWindow</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/goch/">goch</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16488742/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16488742_144x108.png?v=1392170461.64"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16488742/">Artificial
+                                        Intelligence: Machine Learning</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/Layzej/">Layzej</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17383969/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17383969_144x108.png?v=1391320744.96"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17383969/">Lassen peak
+                                        volcano project</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/2jackboy2/">2jackboy2</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17087515/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17087515_144x108.png?v=1390869796.78"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17087515/">Happy
+                                        Birthday RabbitNose!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/KittyDKat/">KittyDKat</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16207935/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16207935_144x108.png?v=1392125858.61"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16207935/">Alone in the
+                                        depths</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/sticku/">sticku</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/13029461/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/13029461_144x108.png?v=1383409834.19"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/13029461/">E&amp;Js'
+                                        Smoothie Shop!!!!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/jcat33/">jcat33</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16838588/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16838588_144x108.png?v=1391381997.19"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16838588/">Super
+                                        Mushroom Bowl!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/Broguy/">Broguy</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16497682/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16497682_144x108.png?v=1391514687.47"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16497682/">Paint</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/sockman101/">sockman101</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/3119579/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/3119579_144x108.png?v=1391185359.95"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/3119579/">Zodiac
+                                        story</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/camstah/">camstah</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/326139/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/326139_144x108.png?v=1368020168.15"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/326139/">Potato
+                                        Possum</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/pettamapossum/">pettamapossum</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16001850/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16001850_144x108.png?v=1391869709.38"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16001850/">Riddle
+                                        Squirrel</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/venomous-squirrel/">venomous-squirrel</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17067649/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17067649_144x108.png?v=1391036760.37"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17067649/">how to draw
+                                        eyes! (anime)</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/gamergirl845/">gamergirl845</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16790758/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16790758_144x108.png?v=1391808762.93"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/projects/16790758/">Invisible</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/WatsonLJ/">WatsonLJ</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/14852464/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/14852464_144x108.png?v=1391817852.42"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/14852464/">Following
+                                        Orange </a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/AudreyPrograms/">AudreyPrograms</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/13758299/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/13758299_144x108.png?v=1383159300.6"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/projects/13758299/">weighting</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/gromko/">gromko</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16568919/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16568919_144x108.png?v=1391184634.93"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16568919/">Football
+                                        Competition</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/SkyDiver123/">SkyDiver123</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16113008/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16113008_144x108.png?v=1390850306.74"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16113008/">Clone
+                                        Programming v2.6</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/feasby007/">feasby007</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+                        </ul>
+                    </div><a class="slider-carousel-control left arrow-left off" href="#">‹</a><a
+                        class="slider-carousel-control right arrow-right on" href="#">›</a>
+                    <div class="scrollbar" style="width: 852px;">
+                        <div class="track" style="width: 852px;">
+                            <div class="handle" style="left: 0px; width: 207.995px;">
+                                <div class="end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a name="community_featured_studios" style="display: block; height: 60px; margin-top:-60px"></a>
+            <div class="box slider-carousel-container prevent-select">
+                <div class="box-head">
+                    <h4>Featured Studios</h4>
+                </div>
+                <div class="box-content slider-carousel horizontal sliderCarousel" id="featured"
+                    style="height: 150.5px;">
+                    <div class="viewport" style="overflow: hidden; height: 140.5px;">
+                        <ul class="scroll-content" style="width: 1050px; overflow: hidden; left: 0px;">
+
+
+
+                            <!-- templates/carousel/gallery-thumb.html -->
+                            <li class="gallery thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/studios/61172/" class="image">
+                                    <span class="image">
+                                        <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/gallery/61172_170x100.png?v=1367962675.54"
+                                            width="170" height="100">
+                                    </span>
+                                    <span class="stats">
+                                        <span class="icon-sm studio white"></span>
+                                    </span>
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/studios/61172/">Physics
+                                        Simulations
+                                    </a>
+                                </span>
+                            </li>
+                            <!-- end templates/carousel/gallery-thumb.html -->
+
+
+
+
+                            <!-- templates/carousel/gallery-thumb.html -->
+                            <li class="gallery thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/studios/295029/" class="image">
+                                    <span class="image">
+                                        <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/11737558_170x100.png?v=1375806141.29"
+                                            width="170" height="100">
+                                    </span>
+                                    <span class="stats">
+                                        <span class="icon-sm studio white"></span>
+                                    </span>
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/studios/295029/">GadgetAndyMan's
+                                        Art Likes
+                                    </a>
+                                </span>
+                            </li>
+                            <!-- end templates/carousel/gallery-thumb.html -->
+
+
+
+
+                            <!-- templates/carousel/gallery-thumb.html -->
+                            <li class="gallery thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/studios/203274/" class="image">
+                                    <span class="image">
+                                        <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/gallery/203274_170x100.png?v=1376470615.82"
+                                            width="170" height="100">
+                                    </span>
+                                    <span class="stats">
+                                        <span class="icon-sm studio white"></span>
+                                    </span>
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/studios/203274/">Música tocada
+                                        en Scratch (no MP3)
+                                    </a>
+                                </span>
+                            </li>
+                            <!-- end templates/carousel/gallery-thumb.html -->
+
+
+
+
+                            <!-- templates/carousel/gallery-thumb.html -->
+                            <li class="gallery thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/studios/237284/" class="image">
+                                    <span class="image">
+                                        <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/gallery/237284_170x100.png?v=1391466541.24"
+                                            width="170" height="100">
+                                    </span>
+                                    <span class="stats">
+                                        <span class="icon-sm studio white"></span>
+                                    </span>
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/studios/237284/">Scratch Chess
+                                        Club
+                                    </a>
+                                </span>
+                            </li>
+                            <!-- end templates/carousel/gallery-thumb.html -->
+
+
+
+
+                            <!-- templates/carousel/gallery-thumb.html -->
+                            <li class="gallery thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/studios/206850/" class="image">
+                                    <span class="image">
+                                        <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/gallery/206850_170x100.png?v=1368890360.82"
+                                            width="170" height="100">
+                                    </span>
+                                    <span class="stats">
+                                        <span class="icon-sm studio white"></span>
+                                    </span>
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/studios/206850/"> Scratch
+                                        Helping Team
+                                    </a>
+                                </span>
+                            </li>
+                            <!-- end templates/carousel/gallery-thumb.html -->
+
+
+                        </ul>
+                    </div><a class="slider-carousel-control left arrow-left off" href="#">‹</a><a
+                        class="slider-carousel-control right arrow-right on" href="#">›</a>
+                    <div class="scrollbar" style="width: 852px;">
+                        <div class="track" style="width: 852px;">
+                            <div class="handle" style="left: 0px; width: 691.337px;">
+                                <div class="end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a name="curator_top_projects" style="display: block; height: 60px; margin-top:-60px"></a>
+            <div class="box">
+                <div class="box-head">
+                    <a style="float:right;"
+                        href="/web/20140212154548/http://scratch.mit.edu/discuss/topic/6963/?page=1#post-44621">Learn
+                        more</a>
+                    <h4>Projects Curated by Unrealisation</h4>
+                </div>
+                <div class="box-content slider-carousel horizontal" id="featured">
+                    <div class="viewport">
+                        <ul class="scroll-content" style="width: 849px;">
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16050548/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16050548_144x108.png?v=1390758835.73"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16050548/">Archery
+                                        Engine</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Thepuzzlegame/">Thepuzzlegame</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/13846606/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/13846606_144x108.png?v=1392165691.14"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/13846606/">Knowledge is
+                                        a weapon</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/VenusFlyer/">VenusFlyer</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16205063/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16205063_144x108.png?v=1392134979.09"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16205063/">GYRO</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/jamjam195/">jamjam195</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17173119/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17173119_144x108.png?v=1391861022.2"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17173119/">Runner 2</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/bababa12/">bababa12</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17094034/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17094034_144x108.png?v=1390753145.32"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/projects/17094034/">Fourhands</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/d34db33f/">d34db33f</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <a name="scratch_design_studio" style="display: block; height: 60px; margin-top:-60px"></a>
+            <div class="box slider-carousel-container prevent-select">
+                <div class="box-head">
+                    <a style="float:right;" href="/web/20140212154548/http://scratch.mit.edu/studios/320437/">Visit the
+                        studio</a>
+                    <h4>Scratch Design Studio - "New Year, New Resolutions"</h4>
+                </div>
+                <div class="box-content slider-carousel horizontal sliderCarousel" id="featured"
+                    style="height: 158.5px;">
+                    <div class="viewport" style="overflow: hidden; height: 148.5px;">
+                        <ul class="scroll-content" style="width: 3489px; overflow: hidden; left: 0px;">
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17533672/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17533672_144x108.png?v=1391618349.53"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17533672/">My New
+                                        Year's Resolution</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/StarWarsFan02/">StarWarsFan02</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17030184/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17030184_144x108.png?v=1390762671.51"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17030184/">New Year
+                                        Resolutions! </a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/kiratrix/">kiratrix</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16535032/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16535032_144x108.png?v=1390327034.63"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16535032/">resolutions
+                                        for 2014</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/rosadita2101/">rosadita2101</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16549565/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16549565_144x108.png?v=1389669519.44"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16549565/">My New Years
+                                        Resolutions</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Madystar4/">Madystar4</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17091409/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17091409_144x108.png?v=1390996198.92"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17091409/">The Year of
+                                        horse</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/mikelinscratch/">mikelinscratch</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16547539/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16547539_144x108.png?v=1389663701.51"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16547539/">2013
+                                        accomplishments</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/BombCreations/">BombCreations</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16625252/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16625252_144x108.png?v=1389801811.63"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16625252/">My new
+                                        year's resolution!!!!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/MarioKirbybigstfan/">MarioKirbybigstfan</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16941480/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16941480_144x108.png?v=1390762548.4"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16941480/">New year
+                                        2014!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/MineBullet/">MineBullet</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16136552/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16136552_144x108.png?v=1389460752.58"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16136552/">Happy New
+                                        Year Card</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/barbielover1/">barbielover1</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16776340/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16776340_144x108.png?v=1390493034.63"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16776340/">Happy New
+                                        Year with Resolutions</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/ClassyIsSonic/">ClassyIsSonic</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17049576/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17049576_144x108.png?v=1390600108.34"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17049576/">My New
+                                        Year's Resolutions</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Yellow_Mario/">Yellow_Mario</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16258134/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16258134_144x108.png?v=1389043457.02"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16258134/">Not So Stick
+                                        Stick Dude - Episode 1 (New Years Episode!)</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/GameShnaz/">GameShnaz</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16460576/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16460576_144x108.png?v=1389450729.51"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16460576/">This Year
+                                        2014..........</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Mudgeregard/">Mudgeregard</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16769623/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16769623_144x108.png?v=1390101290.54"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16769623/">Major Update
+                                        2 + New Year's Resolutions!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/bballluke/">bballluke</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16496316/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16496316_144x108.png?v=1389568478.6"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16496316/">My
+                                        Resolution for 2014</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/SuperScratchKat/">SuperScratchKat</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16459326/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16459326_144x108.png?v=1389448359.03"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16459326/">New Years
+                                        Resolution!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/Jomac10/">Jomac10</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16444911/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16444911_144x108.png?v=1389394881.61"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16444911/">New Year
+                                        resolutions - click to find out</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/aitan/">aitan</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16455404/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16455404_144x108.png?v=1390295943.96"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16455404/">My
+                                        Resolutions for 2014</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/Rumanti/">Rumanti</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16834488/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16834488_144x108.png?v=1391003521.42"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16834488/">2014 And
+                                        somethings I want to do</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/liam48D/">liam48D</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16153259/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16153259_144x108.png?v=1388693046.26"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16153259/">2014</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/davidkt/">davidkt</a>
+
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+                        </ul>
+                    </div><a class="slider-carousel-control left arrow-left off" href="#">‹</a><a
+                        class="slider-carousel-control right arrow-right on" href="#">›</a>
+                    <div class="scrollbar" style="width: 852px;">
+                        <div class="track" style="width: 852px;">
+                            <div class="handle" style="left: 0px; width: 207.995px;">
+                                <div class="end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <a name="community_most_remixed_projects" style="display: block; height: 60px; margin-top:-60px"></a>
+
+
+
+            <!-- templates/carousel/carousel.html -->
+            <div class="box slider-carousel-container prevent-select">
+                <div class="box-head">
+                    <h4>What the Community is Remixing </h4>
+
+
+                </div>
+
+
+
+                <div class="box-content slider-carousel horizontal sliderCarousel" id="remixes"
+                    style="height: 172.5px;">
+                    <div class="viewport" style="overflow: hidden; height: 162.5px;">
+                        <ul class="scroll-content" style="width: 3489px; overflow: hidden; left: 0px;">
+
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17341214/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17341214_144x108.png?v=1392219346.52"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17341214/">Flappy Birds
+                                        Scratch</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/1timetraveler/">1timetraveler</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>20
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16847315/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16847315_144x108.png?v=1390252435.35"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16847315/">Flappy
+                                        Bird</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/qfoss/">qfoss</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>104
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17305275/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17305275_144x108.png?v=1392209941.6"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17305275/">Talk To
+                                        Elsa!!!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Elsa_The_Conqueror/">Elsa_The_Conqueror</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>36
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17493527/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17493527_144x108.png?v=1392028320.58"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17493527/">Good
+                                        Nutrition Game</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/MrOlsonISA247/">MrOlsonISA247</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>20
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17070249/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17070249_144x108.png?v=1390918645.42"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17070249/">I DRINK YOUR
+                                        MILKSHAKE!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/ThePancakeMan/">ThePancakeMan</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>39
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16975457/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16975457_144x108.png?v=1390490643.99"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16975457/">Flappy Bird
+                                        Scratch Edition remix</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/bcbpps/">bcbpps</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>51
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17499024/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17499024_144x108.png?v=1391550571.27"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17499024/">color
+                                        contest</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/patpat50/">patpat50</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>71
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17422062/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17422062_144x108.png?v=1392048373.85"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17422062/"></a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/TeachMystery/">TeachMystery</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>26
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16931840/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16931840_144x108.png?v=1392161042.92"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16931840/">Catch those
+                                        coins! Update #6 (Latest)</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/aidanMcc/">aidanMcc</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>36
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17299447/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17299447_144x108.png?v=1391193969.52"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17299447/">The
+                                        Apocyalypse Has Come RPG</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/hm3witsbean/">hm3witsbean</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>53
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17374933/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17374933_144x108.png?v=1391283059.57"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17374933/">Design a
+                                        Lego Minifig. CC!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/HeadphoneHappy/">HeadphoneHappy</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>134
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17720260/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17720260_144x108.png?v=1391982471.76"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17720260/">Design
+                                        Contest</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/StandardToaster/">StandardToaster</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>23
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17545594/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17545594_144x108.png?v=1391629564.48"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17545594/">Be In My New
+                                        Game :D</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/TheAnimationPro/">TheAnimationPro</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>27
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17612171/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17612171_144x108.png?v=1392072696.34"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17612171/">Being
+                                        Tardy</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/WazzoTV/">WazzoTV</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>22
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17694007/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17694007_144x108.png?v=1391905045.01"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17694007/">Join Battle
+                                        For Scratch 2014!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Dark_Infinity/">Dark_Infinity</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>101
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17694618/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17694618_144x108.png?v=1391893010.82"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17694618/">My big
+                                        Idea.</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/Chezbrgr/">Chezbrgr</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>27
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16595709/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16595709_144x108.png?v=1390689740.63"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16595709/">Coolo's
+                                        dream</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Bluestar18/">Bluestar18</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>28
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16543185/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16543185_144x108.png?v=1390208063.99"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16543185/">Minimals
+                                        0.8</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Skymagicscout/">Skymagicscout</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>102
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16783942/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16783942_144x108.png?v=1392063206.9"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16783942/">starter -
+                                        gliding monkey</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/drseiter/">drseiter</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>28
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17414178/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17414178_144x108.png?v=1391426823.56"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17414178/">★Hearts
+                                        &amp; Hooves CC</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/PrincessBoop/">PrincessBoop</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black remix"></span>39
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+                        </ul>
+                    </div><a class="slider-carousel-control left arrow-left off" href="#">‹</a><a
+                        class="slider-carousel-control right arrow-right on" href="#">›</a>
+                    <div class="scrollbar" style="width: 852px;">
+                        <div class="track" style="width: 852px;">
+                            <div class="handle" style="left: 0px; width: 207.995px;">
+                                <div class="end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end templates/carousel/carousel.html  -->
+
+
+            <a name="community_most_loved_projects" style="display: block; height: 60px; margin-top:-60px"></a>
+
+
+
+            <!-- templates/carousel/carousel.html -->
+            <div class="box slider-carousel-container prevent-select">
+                <div class="box-head">
+                    <h4>What the Community is Loving </h4>
+
+
+                </div>
+
+
+
+                <div class="box-content slider-carousel horizontal sliderCarousel" id="loves" style="height: 172.5px;">
+                    <div class="viewport" style="overflow: hidden; height: 162.5px;">
+                        <ul class="scroll-content" style="width: 3489px; overflow: hidden; left: 0px;">
+
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16050889/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16050889_144x108.png?v=1391723674.38"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16050889/">Village
+                                        Builder </a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/N25Games/">N25Games</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>261
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17408771/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17408771_144x108.png?v=1391402194.47"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17408771/">Leafeon in a
+                                        Blizzard .:Animation Test: Breath:.</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/-SkyStar-/">-SkyStar-</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>178
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16511478/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16511478_144x108.png?v=1392103779.23"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16511478/">☁ Ultimate
+                                        Game Creator 4</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/Yllie/">Yllie</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>375
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17566787/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17566787_144x108.png?v=1392099064.18"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17566787/">Perfect
+                                        Elastic Physics</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/ProdigyZeta7/">ProdigyZeta7</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>196
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16205063/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16205063_144x108.png?v=1392134979.09"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16205063/">GYRO</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/jamjam195/">jamjam195</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>189
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16794234/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16794234_144x108.png?v=1391914255.36"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16794234/">Neon
+                                        Dodge</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/tbpatj/">tbpatj</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>112
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16484196/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16484196_144x108.png?v=1391288286.17"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16484196/">Dodge
+                                        This!</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/BSH1/">BSH1</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>237
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16158548/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16158548_144x108.png?v=1391604723.19"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16158548/"> Missile
+                                        Control </a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/ehusted/">ehusted</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>146
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17197560/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17197560_144x108.png?v=1391030930.95"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17197560/">Enemy</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/lobie5/">lobie5</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>216
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/12460474/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/12460474_144x108.png?v=1388495929.54"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/12460474/">Rainbow </a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/WolfieE6/">WolfieE6</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>250
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17783489/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17783489_144x108.png?v=1392210631.51"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17783489/">Griffpatch's
+                                        3D Laser Tag v0.2b</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/griffpatch/">griffpatch</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>223
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17668155/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17668155_144x108.png?v=1391816071.3"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17668155/">Fred's
+                                        Waffles! - BC spoof #6 [NOTES!]</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/Silvershimmer43/">Silvershimmer43</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>295
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16834962/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16834962_144x108.png?v=1391988095.34"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16834962/">BotVille</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/GuyFauwx/">GuyFauwx</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>205
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17572892/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17572892_144x108.png?v=1391909317.77"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17572892/">Unique
+                                        Platformer</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/JeremiahMacDonald/">JeremiahMacDonald</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>252
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/15791231/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/15791231_144x108.png?v=1387547321.92"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/15791231/">Shiny
+                                        Nails</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/Day30/">Day30</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>977
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/16960907/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/16960907_144x108.png?v=1390986388.68"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/16960907/">Animal Farm
+                                    </a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/armlessme/">armlessme</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>114
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/15549834/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/15549834_144x108.png?v=1389619787.83"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/15549834/">The Wish
+                                        Sorter ~ Cookie Edition</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/GrannyCookies/">GrannyCookies</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>124
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/15615429/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/15615429_144x108.png?v=1389891243.78"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/15615429/">shadw runner
+                                        v.2</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/buzz3000/">buzz3000</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>1193
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17246062/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17246062_144x108.png?v=1391135426.67"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17246062/">Pixel Art
+                                        Tutorial #1</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a
+                                        href="/web/20140212154548/http://scratch.mit.edu/users/RememberNovember/">RememberNovember</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>157
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+
+
+
+                            <!-- templates/carousel/project-thumb.html -->
+                            <li class="project thumb item">
+                                <a href="/web/20140212154548/http://scratch.mit.edu/projects/17173119/">
+                                    <img src="//web.archive.org/web/20140212154548im_/http://cdn2.scratch.mit.edu/get_image/project/17173119_144x108.png?v=1391861022.2"
+                                        width="144" height="108" class="image">
+                                </a>
+                                <span class="title">
+                                    <a href="/web/20140212154548/http://scratch.mit.edu/projects/17173119/">Runner 2</a>
+                                </span>
+                                <span class="owner">
+
+
+                                    by <a href="/web/20140212154548/http://scratch.mit.edu/users/bababa12/">bababa12</a>
+
+
+                                </span>
+
+                                <span class="stats">
+                                    <span class="icon-xs black love"></span>171
+
+                                </span>
+
+                            </li>
+                            <!-- end templates/carousel/project-thumb.html -->
+
+
+
+
+                        </ul>
+                    </div><a class="slider-carousel-control left arrow-left off" href="#">‹</a><a
+                        class="slider-carousel-control right arrow-right on" href="#">›</a>
+                    <div class="scrollbar" style="width: 852px;">
+                        <div class="track" style="width: 852px;">
+                            <div class="handle" style="left: 0px; width: 207.995px;">
+                                <div class="end"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end templates/carousel/carousel.html  -->
+
         </div>
     </div>
 
@@ -503,7 +3344,7 @@
 
     <script src="{% static 'js/scratch.js' %}"></script>
 
-     {% if user.isAuthenticated %}
+    {% if user.isAuthenticated %}
     <script>
         try {
             document.querySelector('.messages-icon').addEventListener('click', () => {
