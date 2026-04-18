@@ -48,6 +48,14 @@ from django.contrib.auth.models import User
 
 from django.db.models import Count
 
+@csrf_exempt # For now
+def login(request):
+    return render(request, "signin.html")
+
+@csrf_exempt
+def signup(request):
+    return render(request, "signup.html")
+
 # --- Core Project Handlers ---
 
 def generate_unique_title(user, base_title):

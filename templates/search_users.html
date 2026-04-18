@@ -79,32 +79,7 @@
 
 <body>
     <div id="pagewrapper">
-        <div id="topnav">
-            <div class="innerwrap">
-                <div class="container">
-                    <a href="/" class="logo"><span class="scratch"></span></a>
-                    <ul class="site-nav">
-                        <li><a id="project-create" href="/projects/editor/?tip_bar=home">Create</a>
-                        </li>
-                        <li><a href="/explore/?date=this_month">Explore</a></li>
-                        <li><a href="/discuss/">Discuss</a></li>
-                        <li><a href="/about/">About</a></li>
-                        <li class="last"><a href="/help/">Help</a></li>
-                    </ul>
-
-                    <form class="search" action="/search/google_results/" method="get">
-                        <input class="glass" value="" type="submit">
-
-                        <input id="search-input" placeholder="Search" name="q" type="text">
-
-
-                        <input name="date" value="anytime" type="hidden">
-                        <input name="sort_by" value="datetime_shared" type="hidden">
-
-                    </form>
-                </div>
-            </div><!-- innerwrap -->
-        </div>
+      {% include "partials/header.html" %}
         <div class="container" id="content">
             {% block content %}
             <h2>Search Users</h2>

@@ -89,12 +89,19 @@ urlpatterns = [
     path("site-api/auth/get-session", views.get_session),
     path("site-api/auth/login/", accounts_views.api_login),
     path("site-api/auth/logout/", accounts_views.api_logout),
+    path("accounts/login/", views.login, name="login"),
     path("/accounts/logout/", accounts_views.api_logout),
+    path("site-api/signup", accounts_views.signup),
+    path("site-api/signup/", accounts_views.signup),
     path("site-api/projects/all/<int:project_id>/share", views.share_project),
     #path('session/', views.session_info),
     path('session/', views.get_session),
     path('cdn/scratchr2/static/locale/lang_list.txt', views.get_language_list),
     path("cdn/scratchr2/static/locale/<str:langfile>", views.get_lang_file),
+
+    path("login", views.login),
+    path("signin", views.login),
+    path("signup", views.signup),
 
     # Asset set/get
     #path('assets/internalapi/asset/<str:asset_id>/set/', views.asset_set, name='asset_set'),

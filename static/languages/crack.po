@@ -35,7 +35,7 @@ msgid "More Blocks"
 msgstr "More useless crap"
 
 msgid "Motion"
-msgstr "Move nigga"
+msgstr "I like to move it move it"
 
 msgid "Operators"
 msgstr "Operateorts"
@@ -109,7 +109,7 @@ msgid "clear graphic effects"
 msgstr "q"
 
 msgid "color %c is touching %c?"
-msgstr "nigga %c is touching bob %c?"
+msgstr "cat %c is touching bob %c?"
 
 msgid "costume #"
 msgstr "race #"
@@ -224,7 +224,7 @@ msgid "not %b"
 msgstr "not %b"
 
 msgid "pen down"
-msgstr "downskirt"
+msgstr "draw"
 
 msgid "pen up"
 msgstr "upskirt"
@@ -293,16 +293,16 @@ msgid "set instrument to %d.instrument"
 msgstr "set noisebox to %d.instrument"
 
 msgid "set pen color to %c"
-msgstr "set penis color to %c"
+msgstr "set whopper color to %c"
 
 msgid "set pen color to %n"
-msgstr "set penis color to %n"
+msgstr "set whopper color to %n"
 
 msgid "set pen shade to %n"
-msgstr "set penis shade to %n"
+msgstr "set whopper shade to %n"
 
 msgid "set pen size to %n"
-msgstr "set penis size to %n"
+msgstr "set whopper size to %n"
 
 msgid "set rotation style %m.rotationStyle"
 msgstr "set rotation way %m.rotationStyle"

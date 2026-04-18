@@ -4443,6 +4443,17 @@ textarea::-webkit-scrollbar-thumb {
   text-decoration: none
 }
 
+#topnav ul.account-nav li a  {
+  color: #fff;
+  font-size: 15px;
+  padding: 0 15px;
+  display: inline-block
+}
+
+#topnav ul.account-nav li a:hover  {
+  text-decoration: none
+}
+
 #topnav form.search {
   display: inline-block;
   margin: 0 10px;
